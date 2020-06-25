@@ -1,0 +1,83 @@
+.home{
+    width:100%;
+    background: url('../../asserts/bg.jpg');
+    background-size: 100%;
+    position: relative;
+    button{
+        font-weight: 500;
+        margin-top:16%;
+        margin-left:8%;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        box-sizing: border-box;
+        color: #FFDD9C;
+        font-family: museo-bold;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.01rem;
+        background-color: #EA646F;
+        border-radius: 10rem;      
+        border-color: rgba(0, 0, 0, 0);
+        border-width: 0.1rem;
+        border-style: solid;
+        padding: 1rem 1.5rem;
+        // position: absolute;
+    }
+    &__slogan{
+        color: #000;
+        text-shadow: 2px 2px rgba(41,43,50,.1);
+        margin-top: 10%;
+        padding-bottom: 1.5rem;
+        font-family: Circular;
+        h3{    
+            margin-left:10%;
+            
+            // font-family: museo-black;
+            font-size: 36px;
+            line-height: 40px;
+            letter-spacing: -0.25px;
+            
+        }
+        h4{
+            margin-left:3%;
+ 
+            // font-family: museo-regular;
+            font-size: 1.8rem;
+            line-height: 40px;
+            letter-spacing: -0.15px; 
+           
+        }
+    }
+    &__vedio{
+        margin-top:10%;
+        width:50%;
+        margin-left:5%;
+        p{
+            margin-left:20rem;
+            margin-top:-5rem;
+            color: #EA646F;
+            text-shadow: 1px 1px rgba(41,43,50,.1);
+        }
+        
+    }
+    &__forum{
+        margin-top:-10%;
+        margin-left:54%;
+        button{
+            margin-top:60%;
+            margin-left:65%;
+            background: #FFDC9C;
+            border: 0.1rem solid rgba(41,43,50,.1);
+            color:#EA646F;
+            
+        }
+    }
+    span{
+        // color:#fff;
+        float:right;
+        margin-top:-30rem;
+        // color:#EA646F;
+    }
+}
