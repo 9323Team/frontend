@@ -1,7 +1,7 @@
 import React,{ PureComponent} from 'react'
-import Menu from '../../components/menu/menu'
+import Menu from '../../containers/menu/menu'
 import Ballon from '../../components/balloon/balloon'
-import Popup from '../../components/popup/popup'
+import Popup from '../../containers/popup/popup'
 import Footer from '../../components/footer/footer'
 import './home.scss'
 
