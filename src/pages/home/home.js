@@ -3,9 +3,30 @@ import Menu from '../../containers/menu/menu'
 import Ballon from '../../components/balloon/balloon'
 import Popup from '../../containers/popup/popup'
 import Footer from '../../components/footer/footer'
+import Chatbot from '../../components/chatbot/chatbot'
 import './home.scss'
+// import chatbot from '../../components/chatbot/chatbot'
 
 class Home extends PureComponent{
+    constructor(){
+        super();
+        this.state = {
+            chatFlag: false
+        }
+    }
+    showHide=()=>{
+        // console.log(this.state.chatFlag)
+        if (this.state.chatFlag === true){
+            this.setState({chatFlag: false})
+        } else {
+            this.setState({chatFlag: true})
+        }
+    }
+    setChildData=(data)=>{
+        this.setState({
+          chatFlag:data
+        })
+    }
     render(){
         return(
             <>
@@ -14,9 +35,8 @@ class Home extends PureComponent{
                 <Menu/> 
                 <div className="home__chat">
                     <Ballon stroke="#16000C" fill="#FCBC40"/>
-                    <button onClick={()=>{
-                        this.props.history.replace('/chatbot')
-                    }}>Chat with me</button>
+                    <button onClick={this.showHide}>Chat with me</button>
+                    {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
                 </div>
                 
                 
