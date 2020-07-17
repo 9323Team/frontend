@@ -35,14 +35,14 @@ class Home extends PureComponent{
                 <Menu/> 
                 <div className="home__chat">
                     <Ballon stroke="#16000C" fill="#FCBC40"/>
-                    <button onClick={this.showHide}>Chat with me</button>
+                    <button className='home__btn' onClick={this.showHide}>Chat with me</button>
                     {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
                 </div>
                 
                 
                 <div className="home__forum">
                     <Ballon stroke="#16000C" fill="#F27B86"/>
-                    <button onClick={()=>{
+                    <button className='home__btn' onClick={()=>{
                         this.props.history.replace('/forum')
                     }}>Discuss here</button>
                 </div>

@@ -13,7 +13,8 @@ export default function Chatbot(props){
     let [uname, setName] =useState('');
     useEffect( ()=>{
         scrollToBottom();
-    },[showFlag, searchString, lists,messagesEnd, topic]);
+        
+    },[lists,messagesEnd, showFlag, searchString, topic]);
 
     async function postMessage(m){
         
@@ -27,11 +28,12 @@ export default function Chatbot(props){
             let x = lists
             x.push({flag:'bot' ,values: res.reply})
             // setList([...lists, {flag:'bot' ,values: res.reply}])
+            
             setList(x)
             setTopic(res.vars.topic)
-
+            setSearch('')
         }
-        return res.status
+        // return res.status
         
     }
     function showchat(){
@@ -41,14 +43,16 @@ export default function Chatbot(props){
     function sendData(){
         props.setChildData(false)
     }
-    async function send (e){
+    async function send(){
         if (searchString !== ''){
             let y = lists
             y.push({flag:'user' ,values:searchString})
             // setList([...lists, {flag:'user' ,values:searchString}])
             setList(y)
-            setTimeout(()=>postMessage(searchString), 2000)
-            setSearch('')
+            // for(let t = Date.now(); Date.now() - t <= 3000;);
+            // setTimeout(()=>postMessage(searchString), 1000)
+            postMessage(searchString)
+
         }
         
     }
@@ -72,14 +76,17 @@ export default function Chatbot(props){
         }
       }
     function handleShow(e){
-      setSearch(e.target.value)
+        console.log(1)
+        setSearch(e.target.value)
     }
     function showHide(){
         return(
             
             <div className='chatbot'>
             <div className='chatbot__top'>
-                <img src="https://cdn.chatbot.com/widget/5ec388b55e5b6a00078b25ae/oJmzXHfB5w__.png" alt="" className='chatbot__img'></img>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__img'></img>
+                {/* https://images.idgesg.net/images/article/2018/02/artificial_intelligence_ai_virtual_assistant_robot_chatbot_thinkstock_856909876-100749925-large.jpg */}
+                {/* https://cdn.chatbot.com/widget/5ec388b55e5b6a00078b25ae/oJmzXHfB5w__.png */}
                 {/* <div className='chatbot__status'></div> */}
                 <p className='chatbot__title'>Unihelp chatbot</p>
                 <div className='chatbot__topCloseIcon' >
@@ -95,10 +102,10 @@ export default function Chatbot(props){
             <div className='chatbot__input'>
                 <input className='chatbot__inputLine' type='text' maxLength='256' placeholder='Type your message here' value={searchString} onChange={handleShow}></input>
                 {/* <button onClick={()=>send()} type='submit'>send</button> */}
-                <button onClick={()=>send()} type='submit'><FontAwesomeIcon  style={{fontSize:'30px' ,color:' rgb(150, 155, 166)', paddingLeft:'20px' }} icon={faCommentDots}/></button>
+                <button className='chatbot__sendButton' onClick={()=>send()} ><FontAwesomeIcon  style={{fontSize:'30px' ,color:' rgb(150, 155, 166)', paddingLeft:'0px' }} icon={faCommentDots}/></button>
             </div>
             <div className='chatbot__bottom'>
-
+                <p className='chatbot__bottomLine'>COMP 9323-Group 3</p>
             </div>
 
             </div>
