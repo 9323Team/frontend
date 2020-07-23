@@ -5,7 +5,7 @@ import Popup from '../../containers/popup/popup'
 import Footer from '../../components/footer/footer'
 import './home.scss'
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
-
+import Chatbot from '../../components/chatbot/chatbot'
 class Home extends PureComponent{
     state={
         postsExample:[
@@ -36,8 +36,26 @@ class Home extends PureComponent{
             {role:'User',photo:'🎃',content:'No，I’m sick and I want to see a doctor.'},
             {role:'Uni',photo:'🤖',content:'Of course, you can make an appointment with the UNSW Health Service by calling 9385 5425 or by logging in to our Appointuit appointment booking system through this link: https://widget. appointuit. com/prac_40675/log_in'},
         ],
-        // height:[],
+        chatFlag: false,
+        robotFlag: true
         // initanimate:[false,false,false,false,false,false]
+    }
+    showHide=()=>{
+        // console.log(this.state.chatFlag)
+        if (this.state.chatFlag === true){
+            // for(let t = Date.now(); Date.now() - t <= 500;);
+            this.setState({chatFlag: false, robotFlag: true})
+        } else {
+            // for(let t = Date.now(); Date.now() - t <= 500;);
+            this.setState({chatFlag: true, robotFlag: false})
+        }
+    }
+    setChildData=(data)=>{
+        // for(let t = Date.now(); Date.now() - t <= 500;);
+        this.setState({
+          chatFlag:data,
+          robotFlag:true
+        })
     }
     componentDidMount(){
         
@@ -66,6 +84,11 @@ class Home extends PureComponent{
         return(
             <div className='homebox' ref="myscroll">
             <Popup/>
+            {this.state.robotFlag && <button className='home__chatbotBtn' onClick={this.showHide}>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='home__chatbotImg'>
+                    </img>
+                    </button> }
+            {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
             <div className="home">
                 <Menu/> 
 
