@@ -3,10 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimesCircle, faTimes, faCommentDots, faPaperPlane} from '@fortawesome/free-solid-svg-icons'
 import './chatbot.scss'
 import {getMessage} from '../../api/api'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import { CSSTransition } from 'react-transition-group';
-import Animated from 'animated/lib/targets/react-dom';
-import Easing from 'animated/lib/Easing';
+
 
 export default function Chatbot(props){
     let [showFlag,setFlag] = useState(true);
@@ -151,7 +148,7 @@ export default function Chatbot(props){
                 
             </div>
             <div className='chatbot__bottom'>
-                <p className='chatbot__bottomLine'>COMP 9323 - Group 3</p>
+                {/* <p className='chatbot__bottomLine'>COMP 9323 - Group 3</p> */}
             </div>
 
             </div>
