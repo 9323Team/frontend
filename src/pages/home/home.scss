@@ -1,6 +1,9 @@
+.homebox{
+    overflow-x: hidden;
+}
 .home{
     width:100%;
-    background: url('../../asserts/bg.jpg');
+    background: url('https://newsroom.unsw.edu.au/sites/default/files/styles/full_width__2x/public/thumbnails/image/200624_covidsurvey_3.jpg?itok=Nn_U6b-X') no-repeat;
     background-size: 100%;
     position: relative;
     button{
@@ -80,5 +83,213 @@
         float:right;
         margin-top:-30rem;
         // color:#EA646F;
+    }
+}
+.home__forumBox{
+    padding-bottom: 70px;
+    &-description{
+        text-align: center;
+        h2{
+            font-weight: 700;
+            color: rgb(41, 43, 50);
+            font-size: 32px;
+            letter-spacing: -0.4px;
+            margin-bottom: 8px;
+        }
+        h3{
+            font-weight: 300;
+            color: #545a77;
+            line-height: 1.6;
+        }
+    }
+    .go-left{
+        animation: 150s linear 0s infinite normal none running slide;
+        @keyframes slide {
+            0%{
+                transform:translateZ(0px);
+            }
+            100%{
+                transform:translate3d(-1920px,0px,0px);
+            }
+        }
+    }
+    .go-right{
+        animation: 150s linear 0s infinite normal none running slideR;
+        @keyframes slideR {
+            0%{
+                transform: translate3d(-1920px, 0px, 0px);
+            }
+            100%{
+                transform: translate3d(1920px, 0px, 0px);
+            }
+        }
+    }
+    .home__forumP{
+        
+        white-space: nowrap;
+        backface-visibility: hidden;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        transition: all 0.2s ease 0s;
+        
+        &-post{
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            width: 300px;
+            height: 150px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px;
+            margin: 10px;
+            background: white;
+            border-radius: 4px;
+            span{
+                position: relative;
+                display: block;
+                font-weight: 700;
+                color: rgb(41, 43, 50);
+                font-size: 11px;
+                letter-spacing: 0.8px;
+                text-transform: uppercase;
+                margin: 0px 24px;
+                padding: 12px 0px 4px;
+                border-bottom: 1px solid rgb(246, 248, 253);
+            }
+            &-content{
+                position: relative;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                margin: 12px 24px 0px;
+                img{
+                    height: 32px;
+                    width: 32px;
+                    margin-right: 12px;
+                    border-radius: 50%;
+                }
+                h5{
+                    width: 160px;
+                    height: 60px;
+                    margin-left:10px;
+                    margin-top:0px;
+                    white-space: pre-line;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: rgb(41, 43, 50);
+                    overflow: hidden;
+                }
+            }
+            &-role{
+                position: absolute;
+                bottom: 0px;
+                display: block;
+                width: calc(100% - 48px);
+                margin: 0px 24px;
+                padding: 6px 0px;
+    
+                border-top: 1px solid rgb(246, 248, 253);
+                
+            }
+            .expert{
+                color:green;
+            }
+            .student{
+                color:black;
+            }
+            .admin{
+                color:red;
+            }
+            
+        }
+        
+    }
+
+}
+
+.home__chatbotBox{
+    padding-bottom: 180px;
+    
+    .dialog{
+        width:50%;
+        padding:30px;
+        margin:auto;
+        transition: transform 5s;
+        .animate{
+            // transition: all .5s cubic-bezier(.49,-.015,.27,1);
+            // transition: all 2.5s cubic-bezier(.49,-.015,.27,1);
+            transform: scale(1);
+            opacity: 1;
+        }
+        &__user{
+            
+            transform: scale(.95);
+            opacity: 0;
+            transition: all 1.5s cubic-bezier(.49,-.015,.27,1);
+            margin-left:10px;
+            &-photo{
+                text-align: center;
+                font-size:40px;
+                background:#fff;
+                width:55px;
+                height:55px;
+                border-radius: 50%;
+                border:2px solid #0AC2EF;
+                float:left;
+            }
+            &-frame{
+                border:2px solid #0AC2EF;
+                border-radius: 15px;
+                width:40%;
+                margin-left:90px;
+                p{
+                    padding:3px;
+                    padding-left: 10px;
+                }
+            }
+        }
+        &__robot{
+            opacity: 0;
+            margin-top:-40px;
+            margin-right:10px;
+            transform: scale(.95);
+            transition: all 1.5s cubic-bezier(.49,-.015,.27,1);
+            &-photo{
+                text-align: center;
+                font-size:40px;
+                background:#fff;
+                width:55px;
+                height:55px;
+                border-radius: 50%;
+                border:2px solid #B3B6CB;
+                float:right;
+            }
+            &-frame{
+                width:40%;
+                border:2px solid #B3B6CB;
+                border-radius: 15px;
+                float:right; 
+                margin-right:20px;
+                p{
+                    padding:3px;
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+    
+
+}
+.home__intro{
+    padding-bottom: 100px;
+    background:#0EA3C7;
+    color:#fff;
+    text-align: center;
+    h1{
+        padding-top:40px;
+        line-height: 2.5rem;
+        text-align: center;
+    }
+    h2{
+        line-height: 2rem;
     }
 }
