@@ -3,6 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimesCircle, faTimes, faCommentDots, faPaperPlane} from '@fortawesome/free-solid-svg-icons'
 import './chatbot.scss'
 import {getMessage} from '../../api/api'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { CSSTransition } from 'react-transition-group';
+import Animated from 'animated/lib/targets/react-dom';
+import Easing from 'animated/lib/Easing';
+
 export default function Chatbot(props){
     let [showFlag,setFlag] = useState(true);
     let [searchString,setSearch] =useState('');
@@ -11,10 +16,14 @@ export default function Chatbot(props){
     let [messagesEnd, setMessage] =useState('');
     let [topic, setTopic] =useState('');
     let [uname, setName] =useState('');
+
+
     useEffect( ()=>{
         scrollToBottom();
         
     },[lists,messagesEnd, showFlag, searchString, topic]);
+
+    
 
     async function postMessage(m){
         
@@ -32,6 +41,7 @@ export default function Chatbot(props){
     }
     function answerFromBot(res) {
         let x = lists
+            x.pop();
             x.push({flag:'bot' ,values: res.reply})
             // setList([...lists, {flag:'bot' ,values: res.reply}])
             
@@ -53,8 +63,9 @@ export default function Chatbot(props){
             // setList([...lists, {flag:'user' ,values:searchString}])
             setList(y)
             // for(let t = Date.now(); Date.now() - t <= 3000;);
-            // setTimeout(()=>postMessage(searchString), 1000)
-            postMessage(searchString)
+            y.push({flag:'bot', values:'. . .'})
+            setTimeout(()=>postMessage(searchString), 1000)
+            // postMessage(searchString)
             setSearch(' ')
             // setSearch('')
         }
@@ -64,14 +75,27 @@ export default function Chatbot(props){
         return (
             lists.map((names, index) => {
                 if (names.flag === 'bot'){
+
                     // for(let t = Date.now(); Date.now() - t <= 200;);
-                    return (<div className='chatbot__returnBot'>
+                    if (names.values === '. . .'){
+                        return (<div className='chatbot__returnBot'>
+                        <button className='chatbot__nouseBtn'>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__inlineImg'></img>
+                            </button>
+                                <span className='chatbot__inlineTitle'>Unihelp chatbot</span>
+                                <div className='chatbot__botMessage'><div className='chatbot__typing'>{names.values}</div></div>
+                            </div>)
+                    }
+                    else{
+                        return (<div className='chatbot__returnBot'>
                         <button className='chatbot__nouseBtn'>
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__inlineImg'></img>
                             </button>
                                 <span className='chatbot__inlineTitle'>Unihelp chatbot</span>
                                 <div className='chatbot__botMessage'>{names.values}</div>
                             </div>)
+                    }
+                    
                 } else {
                     // for(let t = Date.now(); Date.now() - t <= 200;);
                     return (
@@ -124,6 +148,7 @@ export default function Chatbot(props){
                 <input className='chatbot__inputLine' type='text' maxLength='256' placeholder='Type your message here' value={searchString} onChange={handleShow}></input>
                 {/* <button onClick={()=>send()} type='submit'>send</button> */}
                 <button className='chatbot__sendButton' onClick={()=>send()} ><FontAwesomeIcon  style={{fontSize:'25px' ,color:' rgb(150, 155, 166)'}} icon={faPaperPlane}/></button>
+                
             </div>
             <div className='chatbot__bottom'>
                 <p className='chatbot__bottomLine'>COMP 9323 - Group 3</p>
@@ -135,8 +160,18 @@ export default function Chatbot(props){
     }
 
     return (
+        
         <>
+
         <div> {showFlag && showHide()}</div>
+        
+
+        {/* <ReactCSSTransitionGroup   
+            className="example"
+            transitionAppear={true}
+            transitionAppearTimeout={500}>
+        <div> {showFlag && showHide()}</div>
+        </ReactCSSTransitionGroup> */}
        </>
         
         

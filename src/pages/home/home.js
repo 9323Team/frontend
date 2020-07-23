@@ -20,9 +20,11 @@ class Home extends PureComponent{
         if (this.state.chatFlag === true){
             // for(let t = Date.now(); Date.now() - t <= 500;);
             this.setState({chatFlag: false, robotFlag: true})
+            
         } else {
             // for(let t = Date.now(); Date.now() - t <= 500;);
             this.setState({chatFlag: true, robotFlag: false})
+            
         }
     }
     setChildData=(data)=>{
