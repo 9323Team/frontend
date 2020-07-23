@@ -3,6 +3,49 @@
     background: url('../../asserts/bg.jpg');
     background-size: 100%;
     position: relative;
+    &__chatbotBtn{
+        animation: floating 1.5s ease-in-out infinite;
+        position: fixed;
+        bottom: 60px;
+        right:100px;
+        width: 80px;
+        height: 80px;
+        z-index: 99999;
+        background-color:rgb(255, 255, 255);
+        border: none;
+        border-radius: 100px;
+        // margin-top: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        // padding: 10px;
+        transition-duration: 0.5s;
+        color: rgb(255, 255, 255);
+        outline: none;
+        // background-position: center;
+    }
+    &__chatbotBtn :focus{
+        cursor: pointer;
+        outline:0;
+        
+    }
+    &__chatbotBtn:hover  {
+        cursor: pointer;
+        box-shadow: 0 5px rgb(189, 194, 202);
+        transform: translateY(-5px);
+       animation: rotate-out ;
+        // background-color: rgb(198, 208, 230);
+    }
+
+    // &__chatbotBtn :active{
+    //     animation: rotate-out ;
+    // }
+
+    &__chatbotImg{
+        // display: inline;
+        width: 65px;
+        background-size: cover;
+    }
     &__btn{
         outline:none;
         font-weight: 500;

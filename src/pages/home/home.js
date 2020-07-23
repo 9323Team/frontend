@@ -11,32 +11,42 @@ class Home extends PureComponent{
     constructor(){
         super();
         this.state = {
-            chatFlag: false
+            chatFlag: false,
+            robotFlag: true
         }
     }
     showHide=()=>{
         // console.log(this.state.chatFlag)
         if (this.state.chatFlag === true){
-            this.setState({chatFlag: false})
+            // for(let t = Date.now(); Date.now() - t <= 500;);
+            this.setState({chatFlag: false, robotFlag: true})
         } else {
-            this.setState({chatFlag: true})
+            // for(let t = Date.now(); Date.now() - t <= 500;);
+            this.setState({chatFlag: true, robotFlag: false})
         }
     }
     setChildData=(data)=>{
+        // for(let t = Date.now(); Date.now() - t <= 500;);
         this.setState({
-          chatFlag:data
+          chatFlag:data,
+          robotFlag:true
         })
     }
     render(){
         return(
             <>
             <Popup/>
+            {this.state.robotFlag && <button className='home__chatbotBtn' onClick={this.showHide}>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='home__chatbotImg'>
+                    </img>
+                    </button> }
+            {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
             <div className="home">
                 <Menu/> 
                 <div className="home__chat">
                     <Ballon stroke="#16000C" fill="#FCBC40"/>
-                    <button className='home__btn' onClick={this.showHide}>Chat with me</button>
-                    {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
+                    <button className='home__btn' >Chat with me</button>
+                    
                 </div>
                 
                 
