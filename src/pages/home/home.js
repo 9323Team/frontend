@@ -4,6 +4,7 @@ import Ballon from '../../components/balloon/balloon'
 import Popup from '../../containers/popup/popup'
 import Footer from '../../components/footer/footer'
 import './home.scss'
+import Welcome from '../../asserts/tommy.png'
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
 import Chatbot from '../../components/chatbot/chatbot'
 class Home extends PureComponent{
@@ -233,6 +234,7 @@ class Home extends PureComponent{
                 
             </div>
             <div className='home__intro'>
+                <img src={Welcome}/>
                 <h1>Welcome to be here</h1>
                 <h2>Get Started now</h2>
             </div>
