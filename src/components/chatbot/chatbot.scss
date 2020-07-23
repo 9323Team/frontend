@@ -183,17 +183,31 @@
     &__returnBot{
         position: relative;
     }
+    &__nouseBtn{
+        width: 40px;
+        height: 40px;
+        border-radius: 100px;
+        background-color:rgb(255, 255, 255);
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        color: rgb(255, 255, 255);
+        outline: none;
+        margin-left: 15px;
+    }
     &__inlineImg{
         // position: relative;
-        width: 32px;
-        height: 25px;
-        border-radius: 100px;
-        padding-left: 10px;
+        width: 28px;
+        // height: 25px;
+        background-size: cover;
+        // border-radius: 100px;
+        // padding-left: 10px;
     }
     &__inlineTitle{
         position: absolute;
-        left:45px;
-        top: 5px;
+        left:60px;
+        top: 12px;
         text-align: center;
         padding-left: 5px;
         padding-bottom: 15px;

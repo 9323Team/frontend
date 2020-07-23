@@ -66,7 +66,9 @@ export default function Chatbot(props){
                 if (names.flag === 'bot'){
                     // for(let t = Date.now(); Date.now() - t <= 200;);
                     return (<div className='chatbot__returnBot'>
+                        <button className='chatbot__nouseBtn'>
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__inlineImg'></img>
+                            </button>
                                 <span className='chatbot__inlineTitle'>Unihelp chatbot</span>
                                 <div className='chatbot__botMessage'>{names.values}</div>
                             </div>)
