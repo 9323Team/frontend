@@ -168,14 +168,11 @@
         word-wrap: break-word;
         white-space: pre-wrap;
         max-width: 80%;
-        // height: 500%;
         // display: flex;
         // -webkit-box-orient: vertical;
         // -webkit-box-direction: normal;
-
         // flex-direction:column;
         // align-items: flex-end;
-        // padding-left: 40%;
         padding: 15px 17px;
         margin-left: auto;
         margin-right: 10px;
@@ -197,12 +194,8 @@
         margin-left: 15px;
     }
     &__inlineImg{
-        // position: relative;
         width: 28px;
-        // height: 25px;
         background-size: cover;
-        // border-radius: 100px;
-        // padding-left: 10px;
     }
     &__inlineTitle{
         position: absolute;
@@ -217,13 +210,9 @@
         position: relative;
     }
     &__userTitle{
-        // position: absolute;
-        // right: 10px;
-        // top:5px;
         font-size: 8px;
-        margin-left: 340px;
+        margin-left: 345px;
         margin-top: 5px;
-        padding: 5px;
     }
     &__input{
         position: absolute;
