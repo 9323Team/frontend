@@ -327,12 +327,21 @@
     background:#0EA3C7;
     color:#fff;
     text-align: center;
+    img{
+        width:350px;
+        height:350px;
+        margin-top:-200px;
+        margin-left:-50%;
+    }
     h1{
-        padding-top:40px;
+        // padding-top:40px;
+        margin-left:5%;
+        margin-top:-70px;
         line-height: 2.5rem;
         text-align: center;
     }
     h2{
         line-height: 2rem;
+        margin-left:5%;
     }
 }
