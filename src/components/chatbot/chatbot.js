@@ -165,7 +165,7 @@ export default function Chatbot(props){
                 <div className='chatbot__title'>Unihelp chatbot</div>
                 <div className='chatbot__status'>Online</div>
                 <div className='chatbot__topCloseIcon' >
-                <button className='chatbot__closeButton' onClick={()=>showchat()}><FontAwesomeIcon style={{fontSize:'20px' ,color:' rgb(150, 155, 166)'}} icon={faTimes}/></button>
+                <button className='chatbot__closeButton' onClick={()=>showchat()}><FontAwesomeIcon className='chatbot__closeIcon' icon={faTimes}/></button>
                 </div>
                 
             </div>
@@ -177,7 +177,7 @@ export default function Chatbot(props){
             <div className='chatbot__input'>
                 <input className='chatbot__inputLine' type='text' maxLength='256' placeholder='Type your message here' value={searchString} onChange={handleShow} onKeyUp={inputKeyUp}></input>
                 {/* <button onClick={()=>send()} type='submit'>send</button> */}
-                <button className='chatbot__sendButton' onClick={()=>send()} ><FontAwesomeIcon  style={{fontSize:'25px' ,color:' rgb(150, 155, 166)'}} icon={faPaperPlane}/></button>
+                <button className='chatbot__sendButton' onClick={()=>send()} ><FontAwesomeIcon className='chatbot__sendIcon' icon={faPaperPlane}/></button>
                 
             </div>
             <div className='chatbot__bottom'>
