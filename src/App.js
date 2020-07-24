@@ -4,6 +4,7 @@ import Home from './pages/home/home'
 import Login from './pages/auth/login'
 import Signup from './pages/auth/signup'
 import Forum from './pages/forum/forum'
+import Popup from './containers/popup/popup'
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,6 +15,8 @@ import {
 
 function App() {
   return (
+      <>
+      <Popup/>
     <Router>
         <Switch>
             <Redirect exact from="/" to="/home" />
@@ -26,6 +29,7 @@ function App() {
         </Switch>
             
     </Router>
+    </>
   );
 }
 
