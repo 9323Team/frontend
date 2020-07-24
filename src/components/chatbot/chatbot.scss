@@ -1,13 +1,15 @@
 .chatbot{
     position: fixed;
     z-index: 9999998;
-    right: 5%;
+    right: 35%;
     bottom: 15%;
     background-color: white;
     border-radius: 3%;
     height: 700px;
-    width: 400px;
-
+    width: 450px;
+    
+    top:65px;
+    
     &__top{
         position: absolute;
         top: 0px;
@@ -247,7 +249,7 @@
     &__bottom{
         position: absolute;
         bottom: 0px;
-        height: 35px;
+        height: 15px;
         width: 100%;
         border-bottom-left-radius: 16px;
         border-bottom-right-radius: 16px;
