@@ -85,11 +85,11 @@ class Home extends PureComponent{
     render(){
         return(
             <div className='homebox' ref="myscroll">
-            
-            {this.state.robotFlag && <button className='home__chatbotBtn' onClick={this.showHide}>
+            <Popup/>
+            {this.state.robotFlag && <div><div className='home__informDiv'>Chat with me</div> <button className='home__chatbotBtn' onClick={this.showHide}>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='home__chatbotImg'>
                     </img>
-                    </button> }
+                    </button></div> }
             {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
             <div className="home">
                 <Menu/> 
