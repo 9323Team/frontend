@@ -6,7 +6,8 @@ import Footer from '../../components/footer/footer'
 import Chatbot from '../../components/chatbot/chatbot'
 import './home.scss'
 import Welcome from '../../asserts/tommy.png'
-import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 class Home extends PureComponent{
     state={
@@ -71,8 +72,9 @@ class Home extends PureComponent{
                     document.getElementById(index).classList.remove('animate')
                     return
                 };
-                document.getElementById(index).classList.add('animate')
-                console.log('Loaded new items');
+                
+                setTimeout(()=>document.getElementById(index).classList.add('animate'),500)
+                
               });
               // start observing
             intersectionObserver.observe(document.getElementById(index));
@@ -128,7 +130,33 @@ class Home extends PureComponent{
                 
             </div>
             
-            
+            <div className='home__chatbotBox'>
+                <section className='home__forumBox-description'>
+                    <h2>Unihelp Chatbot</h2>
+                    <h3>An easy-to-use chatbot to help address student’s queries and<br/> assist them in finding solutions and resources regarding their queriesregarding their well being</h3>
+                </section>
+                <section className='home__chatbotBox-dialog'>
+                    {this.state.dialogExample.map((item,index)=><div className='dialog'>
+                    
+                        {item.role ==='User'&&
+                        <div className='dialog__user' id={index} key={index} >
+                            <div className='dialog__user-photo'>
+                                <FontAwesomeIcon icon={faUser}/>
+                                {/* <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQhr-pGCr0voazj2_UJsHEVkFmiKNyYiSTvu8zfxhIcFfiTD6SGsCmXskQL5bvfEAAr4ZIlS2NqN6Yhr0oJ19rp-A&usqp=CAU&ec=45682161'></img> */}
+                            </div>
+                            <div className='dialog__user-frame'><p>{item.content}</p></div>
+                        </div>}
+                        {item.role ==='Uni'&&<div className='dialog__robot' id={index} key={index}>
+                            <div className='dialog__robot-photo'>
+                                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU'></img>
+                            </div>
+                            <div className='dialog__robot-frame'><p>{item.content}</p></div>
+                        </div>}
+                    </div>)}
+                    
+                </section>
+                
+            </div>
             <div className='home__forumBox'>
                 
             <section className='home__forumBox-description'>
@@ -177,7 +205,7 @@ class Home extends PureComponent{
                         </div>
                 </div>
             </section>
-            <section className='home__forumP go-right'>
+             {/*<section className='home__forumP go-right'> 
                 {this.state.postsExample.map((item,index)=>
                 <div className='home__forumP-post' key={index}>
                         <span>{item.tag}</span>
@@ -219,29 +247,9 @@ class Home extends PureComponent{
                         </div>
                 </div>
             </section>
+            */}
             </div>
-            <div className='home__chatbotBox'>
-                <section className='home__forumBox-description'>
-                    <h2>Unihelp Chatbot</h2>
-                    <h3>An easy-to-use chatbot to help address student’s queries and<br/> assist them in finding solutions and resources regarding their queriesregarding their well being</h3>
-                </section>
-                <section className='home__chatbotBox-dialog'>
-                    {this.state.dialogExample.map((item,index)=><div className='dialog'>
-                    
-                        {item.role ==='User'&&
-                        <div className='dialog__user' id={index} key={index} >
-                            <div className='dialog__user-photo'>{item.photo}</div>
-                            <div className='dialog__user-frame'><p>{item.content}</p></div>
-                        </div>}
-                        {item.role ==='Uni'&&<div className='dialog__robot' id={index} key={index}>
-                            <div className='dialog__robot-photo'>{item.photo}</div>
-                            <div className='dialog__robot-frame'><p>{item.content}</p></div>
-                        </div>}
-                    </div>)}
-                    
-                </section>
-                
-            </div>
+            
             <div className='home__intro'>
                 <img src={Welcome}/>
                 <h1>Welcome to be here</h1>
