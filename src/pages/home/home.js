@@ -3,10 +3,11 @@ import Menu from '../../containers/menu/menu'
 import Ballon from '../../components/balloon/balloon'
 import Popup from '../../containers/popup/popup'
 import Footer from '../../components/footer/footer'
+import Chatbot from '../../components/chatbot/chatbot'
 import './home.scss'
 import Welcome from '../../asserts/tommy.png'
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
-import Chatbot from '../../components/chatbot/chatbot'
+
 class Home extends PureComponent{
     state={
         postsExample:[
@@ -95,15 +96,14 @@ class Home extends PureComponent{
 
                 <div className="home__chat">
                     <Ballon stroke="#16000C" fill="#FCBC40"/>
-                    <button onClick={()=>{
-                        this.props.history.replace('/chatbot')
-                    }}>Chat with me</button>
+                    <button className='home__btn' >Chat with me</button>
+                    
                 </div>
                 
                 
                 <div className="home__forum">
                     <Ballon stroke="#16000C" fill="#F27B86"/>
-                    <button onClick={()=>{
+                    <button className='home__btn' onClick={()=>{
                         this.props.history.replace('/forum')
                     }}>Discuss here</button>
                 </div>
