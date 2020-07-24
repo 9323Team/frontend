@@ -85,44 +85,45 @@ class Home extends PureComponent{
     render(){
         return(
             <div className='homebox' ref="myscroll">
-            
-            {this.state.robotFlag && <button className='home__chatbotBtn' onClick={this.showHide}>
+            <Popup/>
+            {this.state.robotFlag && <div><div className='home__informDiv'>Chat with me</div> <button className='home__chatbotBtn' onClick={this.showHide}>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='home__chatbotImg'>
                     </img>
-                    </button> }
+                    </button></div> }
             {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
             <div className="home">
                 <Menu/> 
-                {/* <div>
-                    <h1>Hello, Welcome to UniHelp.<h1/>
+                <div className="home__info">
+                    <h1>Hello, Welcome to UniHelp.</h1>
                     <h2>
-                        We are here to help you with your struggles. Please visit our forums and speak with our chatbot and we will do our best to support you.
+                        We are here to help you with your struggles.<br/>
+                        Please visit our forums and speak with our chatbot and 
+                        we will do our best to support you.
                     </h2>
-                </div> */}
-                <div className="home__chat">
-                    {/* <Ballon stroke="#16000C" fill="#FCBC40"/> */}
-                    <button className='home__btn' >Chat with me</button>
+                    <div className='home__btnbox'>
+                        <button className='home__btn' >See some FQAs</button>
+                        <button className='home__btn' onClick={()=>{
+                            this.props.history.replace('/forum')
+                        }}>Discuss here</button>
+                    </div>
                     
-                </div> */}
-                
-                
-                 <div className="home__forum">
-                     {/* <Ballon stroke="#16000C" fill="#F27B86"/> */}
-                    <button className='home__btn' onClick={()=>{
-                        this.props.history.replace('/forum')
-                    }}>Discuss here</button>
                 </div>
+                
+                
+                
+                
+                 
                 {/* <div className="home__vedio"> */}
                 {/* <iframe  src="https://www.youtube.com/embed/bPITHEiFWLc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
    
                 {/* <p>"Hot topic: <br/>Coronavirus"</p> */}
                 {/* </div> */}
-                <div className="home__slogan">
+                {/* <div className="home__slogan">
                     <h3>Online Experiences</h3>
                     <h4>Now you can find the most professional info 
                         <br/>and people with medical skills on Unihelp
                     </h4>
-                </div>
+                </div> */}
                 
                 
             </div>
