@@ -4,6 +4,8 @@ import Home from './pages/home/home'
 import Login from './pages/auth/login'
 import Signup from './pages/auth/signup'
 import Forum from './pages/forum/forum'
+import Works from './pages/works/works'
+import Popup from './containers/popup/popup'
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,6 +16,8 @@ import {
 
 function App() {
   return (
+      <>
+      <Popup/>
     <Router>
         <Switch>
             <Redirect exact from="/" to="/home" />
@@ -22,10 +26,11 @@ function App() {
             <Route path="/signup" component={Signup}></Route>
             <Route path="/forum" component={Forum }></Route>
             <Route path="/chatbot" component={Home}></Route>
-            <Route path='/how-it-works' component={Home}></Route>
+            <Route path='/how-it-works' component={Works}></Route>
         </Switch>
             
     </Router>
+    </>
   );
 }
 

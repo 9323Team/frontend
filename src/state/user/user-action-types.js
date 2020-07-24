@@ -1,5 +1,3 @@
 export default {  
-    LOGIN_USER: 'LOGIN_USER',
-    REFRESH_USER:'REFRESH_USER',
-   
+    LOAD_USER_REQUESTED: 'LOAD_USER_REQUESTED',  
 };
