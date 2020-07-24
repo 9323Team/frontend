@@ -93,8 +93,22 @@ class Home extends PureComponent{
             {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
             <div className="home">
                 <Menu/> 
+                <div className="home__info">
+                    <h1>Hello, Welcome to UniHelp.</h1>
+                    <h2>
+                        We are here to help you with your struggles.<br/>
+                        Please visit our forums and speak with our chatbot and 
+                        we will do our best to support you.
+                    </h2>
+                    <div className='home__btnbox'>
+                        <button className='home__btn' >See some FQAs</button>
+                        <button className='home__btn' onClick={()=>{
+                            this.props.history.replace('/forum')
+                        }}>Discuss here</button>
+                    </div>
+                    
+                </div>
                 
-            {/* </div> */}
                 
                 
                 
@@ -104,12 +118,12 @@ class Home extends PureComponent{
    
                 {/* <p>"Hot topic: <br/>Coronavirus"</p> */}
                 {/* </div> */}
-                <div className="home__slogan">
+                {/* <div className="home__slogan">
                     <h3>Online Experiences</h3>
                     <h4>Now you can find the most professional info 
                         <br/>and people with medical skills on Unihelp
                     </h4>
-                </div>
+                </div> */}
                 
                 
             </div>
