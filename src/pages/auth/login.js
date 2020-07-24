@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes,faEye,faEyeSlash } from '@fortawesome/fontawesome-free-solid'
 import {  Link } from "react-router-dom";
-// import {userLogin} from '../../api/api'
+import {userLogin,getUserInfo} from '../../api/api'
 
 import { connect } from "react-redux";
-// import {loginUser} from '../../state/user/user-action-creators'
+//import {loginUser} from '../../state/user/user-action-creators'
 import './auth.scss';
 
 class Login extends Component{
@@ -25,26 +25,25 @@ class Login extends Component{
     
     async login(){
         
-        
-            
-
-          
-        this.props.history.push("/home")
+        let res = (await userLogin(this.state.account,this.state.password))
+        if(res.status === 200){
+            console.log(res.data)
+            sessionStorage.setItem('token',res.data.token)
+            let res1 = await getUserInfo(this.state.account)
+            if(res1.status === 200){
+                console.log(res1.data)
+            }
+        }
+        // this.props.history.push("/home")
                 
           
         
 
     }
     render(){
-        // const style = {
-        //     width:'100%',
-        //     height:'100%',
-        //     background:'#F3F7F6',
-        //     position:'fixed'
-           
-        // }
         
-        const regAcc = /^\w+(-\w+)*@[A-Za-z0-9]+((.|-)*[A-Za-z0-9]+).[A-Za-z0-9]+$/;
+        
+        const regAcc = /^\w+[A-Za-z0-9]+$/;
         const regPw = /^.*(?=.{6,16})(?=.*[A-Za-z]{2,})(?=.*[!@#$%^&*?\(\)]).*$/
         return(
        <div className='authbody' > 
@@ -111,9 +110,12 @@ class Login extends Component{
                 </div>
             </div>
             <div className='auth__bt'>
-                <button onClick={this.login.bind(this)} disabled={!this.state.buttonActive}>Log in</button>
+                <button onClick={this.login.bind(this)} disabled={!this.state.buttonActive}>
+                    Log in
+                </button>
                 
-                <Link to='/signup'>Sign up</Link><Link to='/changePassword'>Change password</Link>
+                <Link to='/signup'>Sign up</Link>
+                <Link to='/changePassword'>Change password</Link>
                 
                 
             </div>
