@@ -9,7 +9,7 @@
     width: 450px;
     // border-color: rgb(154, 162, 173);
     top:65px;
-    
+    box-shadow: 1px 1px 5px rgb(154, 162, 173);
     &__top{
         position: absolute;
         top: 0px;
@@ -211,7 +211,7 @@
         text-align: center;
         padding-left: 5px;
         padding-bottom: 15px;
-        font-size: 12px;
+        font-size: 15px;
     }
     &__returnUser{
         position: relative;

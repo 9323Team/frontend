@@ -113,10 +113,13 @@
            
         }
     }
+    
     &__vedio{
-        margin-top:10%;
-        width:50%;
-        margin-left:5%;
+        margin-top:5%;
+        // width:100%;
+        background:#0AC2EF;
+        display: flex;
+        justify-content: center;
         p{
             margin-left:20rem;
             margin-top:-5rem;
