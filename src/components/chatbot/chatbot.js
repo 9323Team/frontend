@@ -9,11 +9,9 @@ export default function Chatbot(props){
     let [showFlag,setFlag] = useState(true);
     let [searchString,setSearch] =useState('');
     let [lists, setList] = useState([{ flag:'bot',values:'hi', url:''}]);
-    // { flag:'bot',values:'hi'},{ flag:'user',values:'a'},{ flag:'bot',values:'b'}
     let [messagesEnd, setMessage] =useState('');
     let [topic, setTopic] =useState('');
     let [uname, setName] =useState('');
-
 
     useEffect( ()=>{
         scrollToBottom();
@@ -33,8 +31,7 @@ export default function Chatbot(props){
         if (res.status === 'ok'){
             answerFromBot(res);
         }
-        // return res.status
-        
+        // return res.status      
     }
     function answerFromBot(res) {
         let x = lists
@@ -53,10 +50,8 @@ export default function Chatbot(props){
         } else {
             x.push({flag:'bot' ,values: res.reply, url: ''})
         }
-        
-        
-        // setList([...lists, {flag:'bot' ,values: res.reply}])
-            
+              
+        // setList([...lists, {flag:'bot' ,values: res.reply}])        
         setList(x)
         setTopic(res.vars.topic)
         setSearch('')
@@ -98,7 +93,8 @@ export default function Chatbot(props){
                     if (names.values === '. . .'){
                         return (<div className='chatbot__returnBot'>
                         <button className='chatbot__nouseBtn'>
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__inlineImg'></img>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" 
+                            alt="" className='chatbot__inlineImg'></img>
                             </button>
                                 <span className='chatbot__inlineTitle'>Unihelp chatbot</span>
                                 <div className='chatbot__botMessage'><div className='chatbot__typing'>{names.values}</div></div>
@@ -108,7 +104,8 @@ export default function Chatbot(props){
                         if (names.url === ''){
                             return (<div className='chatbot__returnBot'>
                         <button className='chatbot__nouseBtn'>
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__inlineImg'></img>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU"
+                             alt="" className='chatbot__inlineImg'></img>
                             </button>
                                 <span className='chatbot__inlineTitle'>Unihelp chatbot</span>
                                 <div className='chatbot__botMessage'>{names.values}</div>
@@ -117,7 +114,8 @@ export default function Chatbot(props){
                             let result_list = names.values.split('/*/')
                             return (<div className='chatbot__returnBot'>
                             <button className='chatbot__nouseBtn'>
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__inlineImg'></img>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" 
+                                alt="" className='chatbot__inlineImg'></img>
                                 </button>
                                     <span className='chatbot__inlineTitle'>Unihelp chatbot</span>
                         <div className='chatbot__botMessage'>{result_list[0]}<a href = {names.url} target="_blank">Click here.</a>{result_list[1]}</div>
@@ -158,7 +156,8 @@ export default function Chatbot(props){
             <div className='chatbot'>
             <div className='chatbot__top'>
                 <div className="chatbot__colorStatus"></div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__img'></img>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" 
+                alt="" className='chatbot__img'></img>
                 {/* https://images.idgesg.net/images/article/2018/02/artificial_intelligence_ai_virtual_assistant_robot_chatbot_thinkstock_856909876-100749925-large.jpg */}
                 {/* https://cdn.chatbot.com/widget/5ec388b55e5b6a00078b25ae/oJmzXHfB5w__.png */}
                 {/* <div className='chatbot__status'></div> */}
@@ -175,7 +174,8 @@ export default function Chatbot(props){
 
             </div>
             <div className='chatbot__input'>
-                <input className='chatbot__inputLine' type='text' maxLength='256' placeholder='Type your message here' value={searchString} onChange={handleShow} onKeyUp={inputKeyUp}></input>
+                <input className='chatbot__inputLine' type='text' maxLength='256' placeholder='Type your message here' 
+                value={searchString} onChange={handleShow} onKeyUp={inputKeyUp}></input>
                 {/* <button onClick={()=>send()} type='submit'>send</button> */}
                 <button className='chatbot__sendButton' onClick={()=>send()} ><FontAwesomeIcon className='chatbot__sendIcon' icon={faPaperPlane}/></button>
                 
