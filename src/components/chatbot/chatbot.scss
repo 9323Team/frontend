@@ -1,12 +1,12 @@
 .chatbot{
     position: fixed;
     z-index: 9999998;
-    right: 35%;
-    bottom: 15%;
+    right: 5%;
+    bottom: 5%;
     background-color: rgb(255, 255, 255);
     border-radius: 3%;
     height: 700px;
-    width: 450px;
+    width: 400px;
     // border-color: rgb(154, 162, 173);
     top:65px;
     box-shadow: 1px 1px 5px rgb(154, 162, 173);
@@ -31,7 +31,7 @@
         border-radius: 100%;
         position: absolute;
         top: 65px;
-        left: 93px;
+        left: 100px;
         display: block;
         width: 10px;
         height: 10px;
@@ -41,7 +41,7 @@
     &__img{
         position: absolute;
         top:20px;
-        left: 20px;
+        left: 30px;
         width: 80px;
     }
     
@@ -49,7 +49,7 @@
         // text-align: center;
         position: absolute;
         top:22px;
-        left: 125px;
+        left: 140px;
         font-size: 28px;
         // line-height: 31px;
         font-weight: 200;
@@ -66,7 +66,7 @@
     &__status{
         position: absolute;
         top:61px;
-        left: 128px;
+        left: 140px;
         font-size: 13px;
         font-weight: 100;
         white-space: nowrap;
@@ -189,7 +189,7 @@
         // align-items: flex-end;
         padding: 15px 17px;
         margin-left: auto;
-        margin-right: 50px;
+        margin-right: 40px;
     }
     &__returnBot{
         position: relative;
@@ -208,6 +208,19 @@
         outline: none;
         margin-left: 15px;
     }
+    &__nBtn{
+        width: 40px;
+        height: 40px;
+        border-radius: 100px;
+        background-color:rgb(255, 255, 255);
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        // color: rgb(255, 255, 255);
+        outline: none;
+        margin-left: 340px;
+    }
     &__inlineImg{
         width: 28px;
         background-size: cover;
@@ -225,9 +238,10 @@
         position: relative;
     }
     &__userTitle{
-        font-size: 12px;
-        margin-left: 400px;
-        margin-top: 5px;
+        width: 28px;
+        // margin-left: 310px;
+        // margin-top: 5px;
+        background-size: cover;
     }
     &__input{
         position: absolute;
