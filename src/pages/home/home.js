@@ -85,7 +85,7 @@ class Home extends PureComponent{
     render(){
         return(
             <div className='homebox' ref="myscroll">
-            <Popup/>
+            
             {this.state.robotFlag && <button className='home__chatbotBtn' onClick={this.showHide}>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='home__chatbotImg'>
                     </img>
@@ -95,14 +95,14 @@ class Home extends PureComponent{
                 <Menu/> 
 
                 <div className="home__chat">
-                    <Ballon stroke="#16000C" fill="#FCBC40"/>
+                    {/* <Ballon stroke="#16000C" fill="#FCBC40"/> */}
                     <button className='home__btn' >Chat with me</button>
                     
-                </div>
+                </div> */}
                 
                 
-                <div className="home__forum">
-                    <Ballon stroke="#16000C" fill="#F27B86"/>
+                 <div className="home__forum">
+                     {/* <Ballon stroke="#16000C" fill="#F27B86"/> */}
                     <button className='home__btn' onClick={()=>{
                         this.props.history.replace('/forum')
                     }}>Discuss here</button>
@@ -121,7 +121,10 @@ class Home extends PureComponent{
                 
                 
             </div>
+            
+            
             <div className='home__forumBox'>
+                
             <section className='home__forumBox-description'>
                 <h2>Forum Community</h2>
                 <h3>An online student community by promoting events <br/>being held by the UNSW community</h3>
