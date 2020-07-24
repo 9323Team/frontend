@@ -8,7 +8,7 @@ import {getMessage} from '../../api/api'
 export default function Chatbot(props){
     let [showFlag,setFlag] = useState(true);
     let [searchString,setSearch] =useState('');
-    let [lists, setList] = useState([{ flag:'bot',values:'hi'}]);
+    let [lists, setList] = useState([{ flag:'bot',values:'hi', url:''}]);
     // { flag:'bot',values:'hi'},{ flag:'user',values:'a'},{ flag:'bot',values:'b'}
     let [messagesEnd, setMessage] =useState('');
     let [topic, setTopic] =useState('');
@@ -38,13 +38,28 @@ export default function Chatbot(props){
     }
     function answerFromBot(res) {
         let x = lists
-            x.pop();
-            x.push({flag:'bot' ,values: res.reply})
-            // setList([...lists, {flag:'bot' ,values: res.reply}])
+        x.pop();
+        console.log(res)
+        let new_list = res.reply.split('<a href = "')
+        console.log(new_list)
+        if (new_list.length > 1) {
+            let new_reply = new_list[1].split('">Click here</a>')
+            console.log(new_reply)
+            let rep = []
+            rep.push(new_list[0])
+            rep.push(new_reply[1])
+            let z = rep.join('/*/')
+            x.push({flag:'bot' ,values: z, url: new_reply[0]})
+        } else {
+            x.push({flag:'bot' ,values: res.reply, url: ''})
+        }
+        
+        
+        // setList([...lists, {flag:'bot' ,values: res.reply}])
             
-            setList(x)
-            setTopic(res.vars.topic)
-            setSearch('')
+        setList(x)
+        setTopic(res.vars.topic)
+        setSearch('')
     }
     function showchat(){
         setFlag(false)
@@ -53,14 +68,20 @@ export default function Chatbot(props){
     function sendData(){
         props.setChildData(false)
     }
+    function inputKeyUp(e){
+        // console.log(e.keyCode)
+        if(e.keyCode===13){
+            send();
+        }
+    }
     async function send(){
         if (searchString !== ''){
             let y = lists
-            y.push({flag:'user' ,values:searchString})
+            y.push({flag:'user' ,values:searchString, url:''})
             // setList([...lists, {flag:'user' ,values:searchString}])
             setList(y)
             // for(let t = Date.now(); Date.now() - t <= 3000;);
-            y.push({flag:'bot', values:'. . .'})
+            y.push({flag:'bot', values:'. . .', url:''})
             setTimeout(()=>postMessage(searchString), 1000)
             // postMessage(searchString)
             setSearch(' ')
@@ -84,13 +105,25 @@ export default function Chatbot(props){
                             </div>)
                     }
                     else{
-                        return (<div className='chatbot__returnBot'>
+                        if (names.url === ''){
+                            return (<div className='chatbot__returnBot'>
                         <button className='chatbot__nouseBtn'>
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__inlineImg'></img>
                             </button>
                                 <span className='chatbot__inlineTitle'>Unihelp chatbot</span>
                                 <div className='chatbot__botMessage'>{names.values}</div>
                             </div>)
+                        } else {
+                            let result_list = names.values.split('/*/')
+                            return (<div className='chatbot__returnBot'>
+                            <button className='chatbot__nouseBtn'>
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='chatbot__inlineImg'></img>
+                                </button>
+                                    <span className='chatbot__inlineTitle'>Unihelp chatbot</span>
+                        <div className='chatbot__botMessage'>{result_list[0]}<a href = {names.url} target="_blank">Click here.</a>{result_list[1]}</div>
+                                </div>)
+                        }
+                        
                     }
                     
                 } else {
@@ -142,7 +175,7 @@ export default function Chatbot(props){
 
             </div>
             <div className='chatbot__input'>
-                <input className='chatbot__inputLine' type='text' maxLength='256' placeholder='Type your message here' value={searchString} onChange={handleShow}></input>
+                <input className='chatbot__inputLine' type='text' maxLength='256' placeholder='Type your message here' value={searchString} onChange={handleShow} onKeyUp={inputKeyUp}></input>
                 {/* <button onClick={()=>send()} type='submit'>send</button> */}
                 <button className='chatbot__sendButton' onClick={()=>send()} ><FontAwesomeIcon  style={{fontSize:'25px' ,color:' rgb(150, 155, 166)'}} icon={faPaperPlane}/></button>
                 
