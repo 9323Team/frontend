@@ -1,13 +1,15 @@
 .chatbot{
     position: fixed;
     z-index: 9999998;
-    right: 5%;
+    right: 35%;
     bottom: 15%;
     background-color: white;
     border-radius: 3%;
     height: 700px;
-    width: 400px;
-
+    width: 450px;
+    
+    top:65px;
+    
     &__top{
         position: absolute;
         top: 0px;
@@ -29,7 +31,7 @@
         border-radius: 100%;
         position: absolute;
         top: 65px;
-        left: 83px;
+        left: 93px;
         display: block;
         width: 10px;
         height: 10px;
@@ -39,7 +41,7 @@
     &__img{
         position: absolute;
         top:20px;
-        left: 10px;
+        left: 20px;
         width: 80px;
     }
     
@@ -47,7 +49,7 @@
         // text-align: center;
         position: absolute;
         top:22px;
-        left: 105px;
+        left: 125px;
         font-size: 28px;
         // line-height: 31px;
         font-weight: 200;
@@ -64,7 +66,7 @@
     &__status{
         position: absolute;
         top:61px;
-        left: 108px;
+        left: 128px;
         font-size: 13px;
         font-weight: 100;
         white-space: nowrap;
@@ -154,9 +156,9 @@
         font-weight: 100;
         word-wrap: break-word;
         white-space: pre-wrap;
-        margin-left: 10px;
+        margin-left: 50px;
         margin-right: auto;
-        max-width: 80%;
+        max-width: 65%;
         padding: 15px 17px;
     }
     &__userMessage{
@@ -171,7 +173,7 @@
         line-height: 20px;
         word-wrap: break-word;
         white-space: pre-wrap;
-        max-width: 80%;
+        max-width: 65%;
         // display: flex;
         // -webkit-box-orient: vertical;
         // -webkit-box-direction: normal;
@@ -179,10 +181,11 @@
         // align-items: flex-end;
         padding: 15px 17px;
         margin-left: auto;
-        margin-right: 10px;
+        margin-right: 50px;
     }
     &__returnBot{
         position: relative;
+        margin-top: 5px;
     }
     &__nouseBtn{
         width: 40px;
@@ -208,14 +211,14 @@
         text-align: center;
         padding-left: 5px;
         padding-bottom: 15px;
-        font-size: 8px;
+        font-size: 12px;
     }
     &__returnUser{
         position: relative;
     }
     &__userTitle{
-        font-size: 8px;
-        margin-left: 350px;
+        font-size: 12px;
+        margin-left: 400px;
         margin-top: 5px;
     }
     &__input{
@@ -247,7 +250,7 @@
     &__bottom{
         position: absolute;
         bottom: 0px;
-        height: 35px;
+        height: 15px;
         width: 100%;
         border-bottom-left-radius: 16px;
         border-bottom-right-radius: 16px;
