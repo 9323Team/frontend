@@ -73,6 +73,14 @@
         background-color: rgb(255, 255, 255);
         color: rgb(216, 196, 196);
     }
+    &__closeIcon{
+        font-size: 20px ;
+        color:rgb(150, 155, 166);
+    }
+    &__sendIcon{
+        font-size: 25px;
+        color: rgb(150, 155, 166);
+    }
     &__closeButton{
         background-color:rgb(255, 255, 255);
         border: none;

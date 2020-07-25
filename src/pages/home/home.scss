@@ -20,13 +20,14 @@
         width: 150px;
         height:50px;
         border-radius: 15px 15px 0px 15px;
-        z-index: 99999;
+        z-index: 9999999;
         padding-left: 15px;
         padding-top: 18px;
         animation: floating 1.5s ease-in-out infinite;
         box-shadow: 1px 1px 5px rgb(154, 162, 173);
     }
     &__chatbotBtn{
+        box-shadow: 1px 1px 5px rgb(154, 162, 173);
         animation: floating 1.5s ease-in-out infinite;
         position: fixed;
         bottom: 60px;
