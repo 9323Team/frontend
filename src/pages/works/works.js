@@ -65,13 +65,13 @@ class Works extends PureComponent{
             var intersectionObserver = new IntersectionObserver(function(entries) {
                 // If intersectionRatio is 0, the target is out of view
                 // and we do not need to do anything.
-                
+                document.getElementById(index).classList.add('animate')
                 if (entries[0].intersectionRatio <= 0){
                     document.getElementById(index).classList.contains('animate')&&document.getElementById(index).classList.remove('animate')
                     return
                 };
                 
-                setTimeout(()=>document.getElementById(index).classList.add('animate'),500)
+                
                 
               });
               // start observing

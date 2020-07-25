@@ -64,3 +64,16 @@
         }
     }
 }
+.menu__photo{
+    p{
+        color:#E9646F;
+        float: right;
+        margin-right:3px;
+    }
+    img{
+        width:50px;
+        height:50px;
+        border-radius: 50%;
+        float: right;
+    }
+}

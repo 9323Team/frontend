@@ -6,6 +6,8 @@ import './home.scss'
 import Welcome from '../../asserts/tommy.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import {getUserInfos} from '../../state/user/user-action-creater';
+import { connect } from "react-redux";
 
 class Home extends PureComponent{
     state={
@@ -38,8 +40,8 @@ class Home extends PureComponent{
             {role:'Uni',photo:'🤖',content:'Of course, you can make an appointment with the UNSW Health Service by calling 9385 5425 or by logging in to our Appointuit appointment booking system through this link: https://widget. appointuit. com/prac_40675/log_in'},
         ],
         chatFlag: false,
-        robotFlag: true
-        // initanimate:[false,false,false,false,false,false]
+        robotFlag: true,
+        initanimate:[false,false,false,false,false,false]
     }
     showHide=()=>{
         // console.log(this.state.chatFlag)
@@ -59,19 +61,21 @@ class Home extends PureComponent{
         })
     }
     componentDidMount(){
-        
-          
+        const {getUserInfos}=this.props
+        if(!this.props.user.auth){
+            getUserInfos(sessionStorage.getItem('username'))
+        }
         this.state.dialogExample.map((item,index)=>{
             var intersectionObserver = new IntersectionObserver(function(entries) {
                 // If intersectionRatio is 0, the target is out of view
                 // and we do not need to do anything.
-                
-                if (entries[0].intersectionRatio <= 0){
-                    document.getElementById(index).classList.contains('animate')&&document.getElementById(index).classList.remove('animate')
+                document.getElementById(index).classList.add('animate')
+                if (entries[0].intersectionRatio <= 0&&document.getElementById(index).classList.contains('animate')){
+                    document.getElementById(index).classList.remove('animate')
                     return
                 };
                 
-                setTimeout(()=>document.getElementById(index).classList.add('animate'),500)
+                // setTimeout(()=>document.getElementById(index).classList.add('animate'),500)
                 
               });
               // start observing
@@ -291,4 +295,12 @@ class Home extends PureComponent{
         )
     }
 }
-export default Home;
+
+function mapStateToProps(state) {
+    return {
+      user: state.user.current_user,     
+    }
+}
+// export default Login
+  
+export default connect(mapStateToProps, { getUserInfos })(Home);

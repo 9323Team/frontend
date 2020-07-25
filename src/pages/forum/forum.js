@@ -8,10 +8,12 @@ import { Picker } from 'emoji-mart'
 import Menu from '../../containers/menu/menu'
 import ImageUploading from "react-images-uploading";
 import './imgUpload.scss'
-
-
+import {getPosts,postPost,likePost,dislikePost} from '../../api/api'
+import {getUserInfos} from '../../state/user/user-action-creater';
+import { connect } from "react-redux";
 import FilterBar from "../../containers/filterBar/filterBar";
-export default class Forum extends Component{
+import Modal from "react-modal";
+class Forum extends Component{
 
     state={
         emoji:'',
@@ -20,19 +22,114 @@ export default class Forum extends Component{
         tagShow:false,
         textAreaShow:false,
         active:[],
+        tags:'',
+        tagsSubmit:'',
         searchContent:'',
-        textContent:'',
+        textContent:'',//postText
         posts:[{name:'Tom Doe',time:'13:24 24 Jun,2015',content:'node.js',contentImg:'https://create-react-app.dev/img/logo-og.png',tag:'#react#',img:'https://pbs.twimg.com/profile_images/1036730403514736650/PCRxFiEt_400x400.jpg',commentsNum:2,thumbUp:3,thumbDown:4},
         {name:'Tom Doe',time:'13:24 24 Jun,2015',content:'node.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa react',contentImg:'https://create-react-app.dev/img/logo-og.png',tag:'#react#',img:'https://pbs.twimg.com/profile_images/1036730403514736650/PCRxFiEt_400x400.jpg',commentsNum:2,thumbUp:3,thumbDown:4}]
     }
    
-    componentDidMount(){
-        let arr=[...Array(this.state.posts.length)].map(_=>false)
-        this.setState({active:arr})
+    async componentDidMount(){
+        // console.log(this.props)
+        if(!this.props.user.auth){
+            const { getUserInfos } = this.props;
+            getUserInfos(sessionStorage.getItem('username'))
+
+        }
+        let res = await(getPosts())
+        if(res.status === 200){
+            // console.log(res.data)
+            // this.setState({posts:})
+            this.setState({posts:res.data.map((item)=>{
+                const UpVotes=item.UpVotes;
+                // const DownVotes=item.DownVotes;
+                const Comments=item.Comments;
+                const PostTime=new Date(item.PostTime).toDateString()
+                return({
+                    name : item.Author,
+                    photo : item.AuthorPhoto,
+                    tag : item.PostType,
+                    postTime: PostTime,
+                    content : item.Content_Text,
+                    img : item.Content_Img,
+                    like: (JSON.stringify(UpVotes)==='[]'|| UpVotes.indexOf(this.props.user.username) === -1)?false:true,
+                    likeNumber: JSON.stringify(UpVotes)==='[]'?0:UpVotes.length,
+                    comments:JSON.stringify(Comments)==='[]'?0:Comments.length,
+                    id:item.PostID,
+                });
+            })})
+            
+            setTimeout(()=>{
+                let arr=[...Array(this.state.posts.length)].map(_=>false)
+                this.setState({active:arr})
+            },1000)
+        }
     }
+
+    handlerLike=async (id,like)=>{
+        let res1;
+        if(like){
+            //delete
+            res1 = await(dislikePost(id))
+            
+            
+        }else{
+            //put
+            let voteinfo = {
+                "up": true,
+                "username": sessionStorage.getItem('username')
+            }
+            res1 = await (likePost(id,voteinfo))  
+        }
+        if(res1.status === 200){
+            let res = await(getPosts())
+            if(res.status === 200){
+                // console.log(res.data)
+                // this.setState({posts:})
+                this.setState({posts:res.data.map((item)=>{
+                    const UpVotes=item.UpVotes;
+                    const DownVotes=item.DownVotes;
+                    const Comments=item.Comments;
+                    const PostTime=new Date(item.PostTime).toDateString()
+                    return({
+                        name : item.Author,
+                        photo : item.AuthorPhoto,
+                        tag : item.PostType,
+                        postTime: PostTime,
+                        content : item.Content_Text,
+                        img : item.Content_Img,
+                        like: (JSON.stringify(UpVotes)==='[]'|| UpVotes.indexOf(this.props.user.username) === -1)?false:true,
+                        likeNumber: JSON.stringify(UpVotes)==='[]'?0:UpVotes.length,
+                        comments:JSON.stringify(Comments)==='[]'?0:Comments.length,
+                        id:item.PostID,
+                    });
+                })})}
+        }
+        
+    }
+
+    handlerPost=async ()=>{
+        
+        let post = {
+            "username": sessionStorage.getItem('username'),
+            "title": "",
+            "PostType": this.state.tagsSubmit,
+            "content_text": this.state.textContent,
+            "content_img": ""
+        }
+        
+        let res = await (postPost(post))
+        if(res.status === 200){
+            alert('posted')
+        }
+    }
+
     searchHandler=()=>{
         //search=>this.state.searchContent(later change to this.props.searchContent)
+
     }
+
     addEmoji=(emoji)=>{
         
         this.setState({
@@ -40,6 +137,7 @@ export default class Forum extends Component{
             emojiShow:!this.state.emojiShow
         })
     }
+
     render(){
         const maxNumber = 1;
         
@@ -109,12 +207,26 @@ export default class Forum extends Component{
                     ><FontAwesomeIcon icon={faTags}/></li>
                     {this.state.tagShow&&
                     <div className='tagbox'>
-                        <input placeholder="format:#..#,#..#"></input><button className='post-btn'>Submit</button>
+                        <input 
+                        placeholder="format:#..#,#..#"
+                        onChange={(e)=>{
+                            this.setState({tags:e.target.value})
+                        }}
+                        ></input>
+                        <button className='post-btn' onClick={()=>{
+                            if(this.state.tags!==''){
+                                this.setState({tagsSubmit:this.state.tags})
+                            }
+                        }}>Submit</button>
                         <p></p>
                     </div>
                     }
                     <button className='post-btn'>Cancel</button>
-                    <button className='post-btn'>Post</button>
+                    <button 
+                    className='post-btn'
+                    onClick={this.handlerPost} >
+                        Post
+                    </button>
                     
                 </ul>
                 {this.state.textAreaShow&&
@@ -138,9 +250,9 @@ export default class Forum extends Component{
                     <div className='posts__post'>
                     <div className='posts__postbar'>          
                         <div className='posts__postbar-img'>
-                            <img src={item.img}/>
+                            <img src={item.photo}/>
                         </div>
-                        <p><h4>{item.name}</h4> on <span>{item.time}</span></p>
+                        <p><h4>{item.name}</h4> on <span>{item.postTime}</span></p>
                         <span>{item.tag}</span>  
                     </div>
                     <div className='posts__postcontent'>
@@ -175,14 +287,25 @@ export default class Forum extends Component{
                     
                     </div>
                     
-                    {item.contentImg!=='none'&&
+                    {item.img!=='string'&&
                     <div className='posts__postcontentImg'>
-                        <img src={item.contentImg}/>
+                        {<img src={item.img}/>}
                     </div>}
                     <ul>
-                        <li><FontAwesomeIcon icon={faComments}/>{item.commentsNum}Comments</li>
-                        <li><FontAwesomeIcon icon={faThumbsUp}/>{item.thumbUp}</li>
-                        <li><FontAwesomeIcon icon={faThumbsDown}/>{item.thumbDown}</li>
+                        <li onClick={()=>{
+                            this.props.history.push(`/post/${item.id}`)
+                        }}
+                        ><FontAwesomeIcon icon={faComments}/>{item.comments}Comments</li>
+                       
+                
+                        <li>
+                            <FontAwesomeIcon 
+                            icon={faThumbsUp}
+                            onClick={()=>{
+                                this.handlerLike(item.id,item.like)}}
+                            style={item.like?{color:'#FFDE9C',cursor:'pointer'}:{cursor:'pointer'}}
+                            />{item.thumbUp}{item.likeNumber}</li>
+                        {/* <li><FontAwesomeIcon icon={faThumbsDown}/>{item.thumbDown}{item.dislike}</li> */}
                     </ul>
                 </div>)
                 }
@@ -199,3 +322,11 @@ export default class Forum extends Component{
 
     }
 }
+function mapStateToProps(state) {
+    return {
+      user: state.user.current_user,     
+    }
+}
+// export default Login
+  
+export default connect(mapStateToProps, { getUserInfos })(Forum);
