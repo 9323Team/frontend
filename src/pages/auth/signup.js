@@ -45,7 +45,7 @@ export default class Signup extends Component{
 
     }
     render(){
-        const regAcc = /^\w+(-\w+)*@[A-Za-z0-9]+((.|-)*[A-Za-z0-9]+).[A-Za-z0-9]+$/;
+        const regAcc = /^\w+[A-Za-z0-9]+$/;
         const regPw = /^.*(?=.{6,16})(?=.*[A-Za-z]{2,})(?=.*[!@#$%^&*?\(\)]).*$/
         return(
             <div className='authbody' > 
