@@ -12,7 +12,7 @@ import {getPosts,postPost,likePost,dislikePost} from '../../api/api'
 import {getUserInfos} from '../../state/user/user-action-creater';
 import { connect } from "react-redux";
 import FilterBar from "../../containers/filterBar/filterBar";
-import Modal from "react-modal";
+
 class Forum extends Component{
 
     state={
@@ -313,7 +313,12 @@ class Forum extends Component{
                 
 
             </section>
-
+            <div id={0}></div>
+            <div id={1}></div>
+            <div id={2}></div>
+            <div id={3}></div>
+            <div id={4}></div>
+            <div id={5}></div>
         </div> 
         </>
 

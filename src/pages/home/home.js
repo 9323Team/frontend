@@ -41,7 +41,8 @@ class Home extends PureComponent{
         ],
         chatFlag: false,
         robotFlag: true,
-        initanimate:[false,false,false,false,false,false]
+        initanimate:[false,false,false,false,false,false],
+        intersectionObserver:[]
     }
     showHide=()=>{
         // console.log(this.state.chatFlag)
@@ -60,7 +61,13 @@ class Home extends PureComponent{
           robotFlag:true
         })
     }
+    componentWillUnmount(){
+        this.state.intersectionObserver.map((item,index)=>{
+            item.unobserve(document.getElementById(index));
+        })
+    }
     componentDidMount(){
+        
         const {getUserInfos}=this.props
         if(!this.props.user.auth){
             getUserInfos(sessionStorage.getItem('username'))
@@ -69,16 +76,22 @@ class Home extends PureComponent{
             var intersectionObserver = new IntersectionObserver(function(entries) {
                 // If intersectionRatio is 0, the target is out of view
                 // and we do not need to do anything.
+                // this.refs.index
                 document.getElementById(index).classList.add('animate')
+                
                 if (entries[0].intersectionRatio <= 0&&document.getElementById(index).classList.contains('animate')){
                     document.getElementById(index).classList.remove('animate')
+                    // intersectionObserver.unobserve(document.getElementById(index));
                     return
                 };
+                
                 
                 // setTimeout(()=>document.getElementById(index).classList.add('animate'),500)
                 
               });
               // start observing
+            let arr=[...this.state.intersectionObserver,intersectionObserver]
+            this.setState({intersectionObserver:arr})
             intersectionObserver.observe(document.getElementById(index));
 
 

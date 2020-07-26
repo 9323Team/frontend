@@ -40,6 +40,11 @@ export const postComment = async(postid,data)=>
     axios.post(`${BASE}/comments/${postid}`,data,{
         headers: {"Content-Type": "application/json","AUTH-TOKEN": sessionStorage.getItem('token')}
 })
+export const getOnePost = async(postid,data)=>
+    axios.get(`${BASE}/posts/${postid}`,{
+        headers: {"Content-Type": "application/json","AUTH-TOKEN": sessionStorage.getItem('token')}
+})
+
 
 
 

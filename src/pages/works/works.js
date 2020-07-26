@@ -38,7 +38,8 @@ class Works extends PureComponent{
             {role:'Uni',photo:'🤖',content:'Of course, you can make an appointment with the UNSW Health Service by calling 9385 5425 or by logging in to our Appointuit appointment booking system through this link: https://widget. appointuit. com/prac_40675/log_in'},
         ],
         chatFlag: false,
-        robotFlag: true
+        robotFlag: true,
+        intersectionObserver:[]
         // initanimate:[false,false,false,false,false,false]
     }
     showHide=()=>{
@@ -58,6 +59,11 @@ class Works extends PureComponent{
           robotFlag:true
         })
     }
+    componentWillUnmount(){
+        this.state.intersectionObserver.map((item,index)=>{
+            item.unobserve(document.getElementById(index));
+        })
+    }
     componentDidMount(){
         
           
@@ -75,6 +81,8 @@ class Works extends PureComponent{
                 
               });
               // start observing
+            let arr=[...this.state.intersectionObserver,intersectionObserver]
+            this.setState({intersectionObserver:arr})
             intersectionObserver.observe(document.getElementById(index));
 
 

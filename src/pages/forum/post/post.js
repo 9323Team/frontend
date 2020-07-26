@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import './post.scss';
 import '../forum.scss'
 import Menu from '../../../containers/menu/menu'
-import {getComments,postComment} from '../../../api/api'
+import {getComments,postComment,getOnePost} from '../../../api/api'
 export default class Post extends Component{
     state={
         comments:[],
-        commentContent:''
+        commentContent:'',
+        post:{}
     }
     async componentDidMount(){
         let res=await (getComments(this.props.history.location.pathname.replace('/post/','')))
@@ -15,6 +16,12 @@ export default class Post extends Component{
             // console.log(res.data)
             this.setState({comments:res.data.comment})
         }
+        let res1=await (getOnePost(this.props.history.location.pathname.replace('/post/','')))
+        if(res1.status === 200){
+            console.log(res1.data)
+            this.setState({post:res1.data})
+        }
+        
     }
     postComment=async ()=>{
         let res = await (postComment(
@@ -33,30 +40,31 @@ export default class Post extends Component{
             }
         }
     }
+    
     render(){
         
         return(
             <>
             <Menu/>
-            <div className='posts'>
+            <div className='postss'>
             
-                <div className='posts__post'>
-                        <div className='posts__postbar'>   
+                <div className='postss__post'>
+                        <div className='postss__postbar'>   
                             
-                            <div className='posts__postbar-img'>
+                            <div className='postss__postbar-img'>
                                 <img src=''/>
                             </div>
-                            <p><h4>item.name</h4> on <span>postTime}</span></p>
-                            <span>item.tag</span>  
+                            <p><h4>{this.state.post.Author}</h4> on <span>{new Date(this.state.post.PostTime).toDateString()}</span></p>
+                            <span>{this.state.post.postType}</span>  
                         </div>
-                        <div className='posts__postcontent'>
-                            <p>{this.state.comments.length}</p> 
+                        <div className='postss__postcontent'>
+                            <p>{this.state.post.Content_Text}</p> 
                         </div>
                         
-                        {/* {item.img!==''&&
+                        {this.state.post.Content_Img!==''&&
                         <div className='posts__postcontentImg'>
-                            {<img src={item.img}/>}
-                        </div>} */}
+                            {<img src={this.state.post.Content_Img}/>}
+                        </div>}
                         <div className='comment'>
                             < textarea 
                             onChange={(e)=>{
@@ -70,7 +78,7 @@ export default class Post extends Component{
                         <div className='comments'>
                             <div className='comments__comment'>
                                 <img src=''></img> 
-                                <h4>{item.Username} on <span>{item.CommentTime}</span></h4>
+                                <h4>{item.Username} on <span>{new Date(this.state.post.PostTime).toDateString()}</span></h4>
                                 <div className='comments__comment-content'>
                                 <p>{item.Content}</p>
                                 </div>
