@@ -252,7 +252,12 @@ class Forum extends Component{
                         <div className='posts__postbar-img'>
                             <img src={item.photo}/>
                         </div>
-                        <p><h4>{item.name}</h4> on <span>{item.postTime}</span></p>
+                        <p><h4 
+                        className={
+                            (item.usertype==='Admin'&& 'admin-color')||
+                            (item.usertype==='Expert'&& 'expert-color')
+                        }>
+                        {item.name}</h4> on <span>{item.postTime}</span></p>
                         <span>{item.tag}</span>  
                     </div>
                     <div className='posts__postcontent'>

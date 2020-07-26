@@ -54,7 +54,11 @@ export default class Post extends Component{
                             <div className='postss__postbar-img'>
                                 <img src=''/>
                             </div>
-                            <p><h4>{this.state.post.Author}</h4> on <span>{new Date(this.state.post.PostTime).toDateString()}</span></p>
+                            <p>
+                                <h4 className={
+                                    (this.state.AuthorType==='Admin'&& 'admin-color')||
+                                    (this.state.AuthorType==='Expert'&& 'expert-color')
+                                }>{this.state.post.Author}</h4> on <span>{new Date(this.state.post.PostTime).toDateString()}</span></p>
                             <span>{this.state.post.postType}</span>  
                         </div>
                         <div className='postss__postcontent'>
@@ -78,7 +82,10 @@ export default class Post extends Component{
                         <div className='comments'>
                             <div className='comments__comment'>
                                 <img src=''></img> 
-                                <h4>{item.Username} on <span>{new Date(this.state.post.PostTime).toDateString()}</span></h4>
+                                <h4 className={
+                                    (this.state.UserType==='Admin'&& 'admin-color')||
+                                    (this.state.UserType==='Expert'&& 'expert-color')
+                                }>{item.Username} on <span>{new Date(this.state.post.PostTime).toDateString()}</span></h4>
                                 <div className='comments__comment-content'>
                                 <p>{item.Content}</p>
                                 </div>
