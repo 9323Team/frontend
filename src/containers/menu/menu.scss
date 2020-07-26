@@ -3,11 +3,12 @@
     border-bottom: 1px solid #ccc;
 }
 .menu{
+
     height: 60px;
     margin: 0 auto;
     position: fixed;
     width: 100%;
-    z-index:1000;    
+    z-index:100000000;    
     a{
         text-decoration: none;
     }
