@@ -117,10 +117,36 @@ class Forum extends Component{
             "content_text": this.state.textContent,
             "content_img": ""
         }
-        
+        if(this.state.textContent===''){
+            alert('Cannot post empty content!')
+            return
+        }
         let res = await (postPost(post))
         if(res.status === 200){
             alert('posted')
+            this.setState({textContent:''})
+            let res2 = await(getPosts())
+            if(res2.status === 200){
+                //console.log(res.data)
+                // this.setState({posts:})
+                this.setState({posts:res2.data.map((item)=>{
+                    const UpVotes=item.UpVotes;
+                    const DownVotes=item.DownVotes;
+                    const Comments=item.Comments;
+                    const PostTime=new Date(item.PostTime).toDateString()
+                    return({
+                        name : item.Author,
+                        photo : item.Authorphoto,
+                        tag : item.PostType,
+                        postTime: PostTime,
+                        content : item.Content_Text,
+                        img : item.Content_Img,
+                        like: (JSON.stringify(UpVotes)==='[]'|| UpVotes.indexOf(this.props.user.username) === -1)?false:true,
+                        likeNumber: JSON.stringify(UpVotes)==='[]'?0:UpVotes.length,
+                        comments:JSON.stringify(Comments)==='[]'?0:Comments.length,
+                        id:item.PostID,
+                    });
+                })})}
         }
     }
 
