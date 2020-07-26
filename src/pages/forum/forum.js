@@ -47,6 +47,7 @@ class Forum extends Component{
                 const PostTime=new Date(item.PostTime).toDateString()
                 return({
                     name : item.Author,
+                    usertype:item.AuthorType,
                     photo : item.Authorphoto,
                     tag : item.PostType,
                     postTime: PostTime,
@@ -93,6 +94,7 @@ class Forum extends Component{
                     const PostTime=new Date(item.PostTime).toDateString()
                     return({
                         name : item.Author,
+                        usertype:item.AuthorType,
                         photo : item.Authorphoto,
                         tag : item.PostType,
                         postTime: PostTime,
@@ -114,15 +116,17 @@ class Forum extends Component{
             "username": sessionStorage.getItem('username'),
             "title": "",
             "PostType": this.state.tagsSubmit,
-            "content_text": this.state.textContent,
+            "content_text": this.state.textContent.split('\n').join('<br/>'),
             "content_img": ""
         }
         if(this.state.textContent===''){
-            alert('Cannot post empty content!')
+           alert('Cannot post empty content!')
+            
             return
         }
         let res = await (postPost(post))
         if(res.status === 200){
+            // alert(this.state.textContent)
             alert('posted')
             this.setState({textContent:''})
             let res2 = await(getPosts())
@@ -136,6 +140,7 @@ class Forum extends Component{
                     const PostTime=new Date(item.PostTime).toDateString()
                     return({
                         name : item.Author,
+                        usertype:item.AuthorType,
                         photo : item.Authorphoto,
                         tag : item.PostType,
                         postTime: PostTime,
@@ -282,13 +287,13 @@ class Forum extends Component{
                             (item.usertype==='Admin'&& 'admin-color')||
                             (item.usertype==='Expert'&& 'expert-color')
                         }>
-                        {item.name}</h4> on <span>{item.postTime}</span></p>
+                        {item.name}·{item.usertype}</h4> on <span>{item.postTime}</span></p>
                         <span>{item.tag}</span>  
                     </div>
                     <div className='posts__postcontent'>
                     
                     {item.content.length>600?this.state.active[index]?
-                    <><p>{item.content}</p> <span>
+                    <><p>{item.content.split('<br/>').join('\n')}</p> <span>
                     <FontAwesomeIcon 
                     className="posts__postcontent-icon posts__postcontent-iconActive"
                     icon={faChevronCircleDown}
@@ -311,7 +316,7 @@ class Forum extends Component{
                         }}
                         />
                     </span></>:
-                    <p>{item.content}</p>}
+                    <p >{item.content.split('<br/>').join('\n')}</p>}
                         
                     
                     

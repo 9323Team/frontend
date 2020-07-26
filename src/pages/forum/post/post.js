@@ -8,7 +8,8 @@ export default class Post extends Component{
     state={
         comments:[],
         commentContent:'',
-        post:{}
+        post:{},
+        Content_Text:''
     }
     async componentDidMount(){
         let res=await (getComments(this.props.history.location.pathname.replace('/post/','')))
@@ -19,14 +20,14 @@ export default class Post extends Component{
         let res1=await (getOnePost(this.props.history.location.pathname.replace('/post/','')))
         if(res1.status === 200){
             console.log(res1.data)
-            this.setState({post:res1.data})
+            this.setState({post:res1.data,Content_Text:res1.data.Content_Text})
         }
         
     }
     postComment=async ()=>{
         let res = await (postComment(
             this.props.history.location.pathname.replace('/post/',''),
-            {"content":this.state.commentContent,"username":sessionStorage.getItem('username')}
+            {"content":this.state.commentContent.split('\n').join('<br/>'),"username":sessionStorage.getItem('username')}
             ))
         if(res.status === 200){
             this.setState({commentContent:""})
@@ -42,7 +43,7 @@ export default class Post extends Component{
     }
     
     render(){
-        
+       
         return(
             <>
             <Menu/>
@@ -56,13 +57,13 @@ export default class Post extends Component{
                             </div>
                             <p>
                                 <h4 className={
-                                    (this.state.AuthorType==='Admin'&& 'admin-color')||
-                                    (this.state.AuthorType==='Expert'&& 'expert-color')
-                                }>{this.state.post.Author}</h4> on <span>{new Date(this.state.post.PostTime).toDateString()}</span></p>
+                                    (this.state.post.AuthorType==='Admin'&& 'admin-color')||
+                                    (this.state.post.AuthorType==='Expert'&& 'expert-color')
+                                }>{this.state.post.Author}·{this.state.post.AuthorType}</h4> on <span>{new Date(this.state.post.PostTime).toDateString()}</span></p>
                             <span>{this.state.post.postType}</span>  
                         </div>
                         <div className='postss__postcontent'>
-                            <p>{this.state.post.Content_Text}</p> 
+                            <p>{this.state.Content_Text.split('<br/>').join('\n')}</p> 
                         </div>
                         
                         {this.state.post.Content_Img!==''&&
@@ -83,11 +84,11 @@ export default class Post extends Component{
                             <div className='comments__comment'>
                                 <img src={item.Userphoto}></img> 
                                 <h4 className={
-                                    (this.state.UserType==='Admin'&& 'admin-color')||
-                                    (this.state.UserType==='Expert'&& 'expert-color')
-                                }>{item.Username} on <span>{new Date(item.CommentTime).toDateString()}</span></h4>
+                                    (item.UserType==='Admin'&& 'admin-color')||
+                                    (item.UserType==='Expert'&& 'expert-color')
+                                }>{item.Username}·{item.UserType} <span style={{color:'#000'}}>on {new Date(item.CommentTime).toDateString()}</span></h4>
                                 <div className='comments__comment-content'>
-                                <p>{item.Content}</p>
+                                <p>{item.Content.split('<br/>').join('\n')}</p>
                                 </div>
                                 
                             </div>
