@@ -323,7 +323,7 @@ class Forum extends Component{
                     
                     </div>
                     
-                    {item.img!=='string'&&
+                    {item.img!==''&&
                     <div className='posts__postcontentImg'>
                         {<img src={item.img}/>}
                     </div>}
