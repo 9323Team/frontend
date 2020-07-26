@@ -40,7 +40,7 @@ class Forum extends Component{
         if(res.status === 200){
             // console.log(res.data)
             // this.setState({posts:})
-            this.setState({posts:res.data.map((item)=>{
+            this.setState({posts:res.data.sort((a,b)=>b.PostTime-a.PostTime).map((item)=>{
                 const UpVotes=item.UpVotes;
                 // const DownVotes=item.DownVotes;
                 const Comments=item.Comments;
@@ -86,7 +86,7 @@ class Forum extends Component{
             if(res.status === 200){
                 //console.log(res.data)
                 // this.setState({posts:})
-                this.setState({posts:res.data.map((item)=>{
+                this.setState({posts:res.sort((a,b)=>b.PostTime-a.PostTime).data.map((item)=>{
                     const UpVotes=item.UpVotes;
                     const DownVotes=item.DownVotes;
                     const Comments=item.Comments;
@@ -129,7 +129,7 @@ class Forum extends Component{
             if(res2.status === 200){
                 //console.log(res.data)
                 // this.setState({posts:})
-                this.setState({posts:res2.data.map((item)=>{
+                this.setState({posts:res2.data.sort((a,b)=>b.PostTime-a.PostTime).map((item)=>{
                     const UpVotes=item.UpVotes;
                     const DownVotes=item.DownVotes;
                     const Comments=item.Comments;

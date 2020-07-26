@@ -78,7 +78,7 @@ export default class Post extends Component{
                             ></ textarea>
                             <button onClick={this.postComment}>Post</button>
                         </div>
-                        {this.state.comments.length>0&&this.state.comments.map((item,index)=>
+                        {this.state.comments.length>0&&this.state.comments.sort((a,b)=>b.CommentTime-a.CommentTime).map((item,index)=>
                         <div className='comments'>
                             <div className='comments__comment'>
                                 <img src={item.Userphoto}></img> 
