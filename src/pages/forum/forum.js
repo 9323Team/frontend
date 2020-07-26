@@ -26,8 +26,7 @@ class Forum extends Component{
         tagsSubmit:'',
         searchContent:'',
         textContent:'',//postText
-        posts:[{name:'Tom Doe',time:'13:24 24 Jun,2015',content:'node.js',contentImg:'https://create-react-app.dev/img/logo-og.png',tag:'#react#',img:'https://pbs.twimg.com/profile_images/1036730403514736650/PCRxFiEt_400x400.jpg',commentsNum:2,thumbUp:3,thumbDown:4},
-        {name:'Tom Doe',time:'13:24 24 Jun,2015',content:'node.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa reactnode.jsaasasa react',contentImg:'https://create-react-app.dev/img/logo-og.png',tag:'#react#',img:'https://pbs.twimg.com/profile_images/1036730403514736650/PCRxFiEt_400x400.jpg',commentsNum:2,thumbUp:3,thumbDown:4}]
+        posts:[]
     }
    
     async componentDidMount(){
