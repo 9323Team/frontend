@@ -13,7 +13,7 @@ export default class Post extends Component{
     async componentDidMount(){
         let res=await (getComments(this.props.history.location.pathname.replace('/post/','')))
         if(res.status === 200){
-            // console.log(res.data)
+            console.log(res.data)
             this.setState({comments:res.data.comment})
         }
         let res1=await (getOnePost(this.props.history.location.pathname.replace('/post/','')))
@@ -78,7 +78,7 @@ export default class Post extends Component{
                             ></ textarea>
                             <button onClick={this.postComment}>Post</button>
                         </div>
-                        {this.state.comments.length>0&&this.state.comments.sort((a,b)=>b.CommentTime-a.CommentTime).map((item,index)=>
+                        {this.state.comments.length>0&&this.state.comments.sort((a,b)=>new Date(b.CommentTime)-new Date(a.CommentTime)).map((item,index)=>
                         <div className='comments'>
                             <div className='comments__comment'>
                                 <img src={item.Userphoto}></img> 
