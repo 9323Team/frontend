@@ -304,7 +304,7 @@ class Forum extends Component{
                     }}
                     />
                 </span></>:
-                    <><p >{item.content.substring(0,600)}...</p>
+                    <><p >{item.content.split('<br/>').join('\n').substring(0,600)}...</p>
                     <span>
                         <FontAwesomeIcon 
                         className='posts__postcontent-icon'
