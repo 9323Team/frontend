@@ -52,7 +52,7 @@ export default class Post extends Component{
                         <div className='postss__postbar'>   
                             
                             <div className='postss__postbar-img'>
-                                <img src=''/>
+                                <img src={this.state.post.Authorphoto}/>
                             </div>
                             <p>
                                 <h4 className={
@@ -81,11 +81,11 @@ export default class Post extends Component{
                         {this.state.comments.length>0&&this.state.comments.map((item,index)=>
                         <div className='comments'>
                             <div className='comments__comment'>
-                                <img src=''></img> 
+                                <img src={item.Userphoto}></img> 
                                 <h4 className={
                                     (this.state.UserType==='Admin'&& 'admin-color')||
                                     (this.state.UserType==='Expert'&& 'expert-color')
-                                }>{item.Username} on <span>{new Date(this.state.post.PostTime).toDateString()}</span></h4>
+                                }>{item.Username} on <span>{new Date(item.CommentTime).toDateString()}</span></h4>
                                 <div className='comments__comment-content'>
                                 <p>{item.Content}</p>
                                 </div>

@@ -48,7 +48,7 @@ class Forum extends Component{
                 const PostTime=new Date(item.PostTime).toDateString()
                 return({
                     name : item.Author,
-                    photo : item.AuthorPhoto,
+                    photo : item.Authorphoto,
                     tag : item.PostType,
                     postTime: PostTime,
                     content : item.Content_Text,
@@ -85,7 +85,7 @@ class Forum extends Component{
         if(res1.status === 200){
             let res = await(getPosts())
             if(res.status === 200){
-                // console.log(res.data)
+                //console.log(res.data)
                 // this.setState({posts:})
                 this.setState({posts:res.data.map((item)=>{
                     const UpVotes=item.UpVotes;
@@ -94,7 +94,7 @@ class Forum extends Component{
                     const PostTime=new Date(item.PostTime).toDateString()
                     return({
                         name : item.Author,
-                        photo : item.AuthorPhoto,
+                        photo : item.Authorphoto,
                         tag : item.PostType,
                         postTime: PostTime,
                         content : item.Content_Text,
