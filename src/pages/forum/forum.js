@@ -242,6 +242,7 @@ class Forum extends Component{
                         onChange={(e)=>{
                             this.setState({tags:e.target.value})
                         }}
+                        value={this.state.tags}
                         ></input>
                         <button className='post-btn' onClick={()=>{
                             if(this.state.tags!==''){
