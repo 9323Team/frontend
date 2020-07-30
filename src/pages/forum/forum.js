@@ -289,7 +289,7 @@ class Forum extends Component{
                             (item.usertype==='Expert'&& 'expert-color')
                         }>
                         {item.name}·{item.usertype}</h4> on <span>{item.postTime}</span></p>
-                        <span>{item.tag}</span>  
+                        <span className='tag'>{item.tag}</span>  
                     </div>
                     <div className='posts__postcontent'>
                     

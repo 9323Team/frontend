@@ -32,3 +32,28 @@
         }
     }
 }
+@media screen and (max-width: 1300px){
+    .filterBar{
+        height: 8rem;
+        &__filter{
+            // position: absolute;
+            float: left;
+            margin-top:4rem;
+            margin-left:2rem;
+            
+        }
+    }
+}
+@media screen and (max-width: 800px){
+    .filterBar{
+        height: 12rem;
+        align-items: center;
+        &__filter{
+            //position: absolute;
+            float: left;
+            margin-top:8rem;
+            align-items: center;
+            
+        }
+    }
+}
