@@ -250,3 +250,40 @@
     }
     
 }
+@media screen and (max-width: 1050px){
+    .home__chatbotBox{
+        .dialog{
+            width:75%;
+
+        }
+    }  
+}
+@media screen and (max-width: 420px){
+    .home__info{
+        h1{
+            font-size:1.5rem;
+        }
+        h2{
+            font-size:1rem;
+        }
+        .home__btnbox{
+            margin-left:0%;
+            .home__btn{
+                margin-left:3% ;
+            }
+        }
+    }
+    
+    .home__chatbotBox{
+        .dialog{
+            margin-left: 3%;
+            width:85%;
+            margin-bottom: 2.2rem;
+        }
+    } 
+    .home__chatbotBox-dialog {
+        margin-bottom: 15rem;
+    }
+    
+    
+}
