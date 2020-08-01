@@ -36,7 +36,7 @@ export default class Signup extends Component{
         ){
             let res =(await signUp({
                 "username": this.state.account,
-                "userphoto": "",
+                "userphoto": "https://images.assetsdelivery.com/compings_v2/robuart/robuart1612/robuart161200130.jpg",
                 "password": this.state.password,
                 "email": this.state.email,
                 "organization": 'Unihelp',

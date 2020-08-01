@@ -358,3 +358,29 @@
     }
     
 }
+ 
+
+@media screen and (max-width: 1050px){
+    .home__chatbotBox2{
+        .dialog2{
+            width:75%;
+
+        }
+    }  
+}
+@media screen and (max-width: 420px){
+    
+    
+    .home__chatbotBox2{
+        .dialog2{
+            margin-left: 3%;
+            width:85%;
+            margin-bottom: 2.2rem;
+        }
+    } 
+    .home__chatbotBox2-dialog2 {
+        margin-bottom: 15rem;
+    }
+    
+    
+}
