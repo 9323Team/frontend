@@ -5,7 +5,15 @@ import { faSearch} from '@fortawesome/free-solid-svg-icons'
 const searchBox=props=>(
     <>
     <FontAwesomeIcon className='searchIcon' icon={faSearch}/>
-    <input className='searchBox'>
+    <input 
+    className='searchBox'
+    onChange={props.changeContent}
+    value={props.searchContent}
+    onKeyDown={(e)=>{
+        if(e.keyCode === 13){
+            props.searchHandler();
+        }
+    }}>
         
     </input></>
 )

@@ -26,7 +26,8 @@ class Forum extends Component{
         tagsSubmit:'',
         searchContent:'',
         textContent:'',//postText
-        posts:[]
+        posts:[],
+        topic:'All',
     }
    
     async componentDidMount(){
@@ -154,12 +155,163 @@ class Forum extends Component{
                 })})}
         }
     }
-
-    searchHandler=()=>{
-        //search=>this.state.searchContent(later change to this.props.searchContent)
-
+    topicHandler=async (topic)=>{
+        this.setState({topic:topic})
+        let res = await(getPosts())
+        if(res.status === 200){
+            // console.log(res.data)
+            // this.setState({posts:})
+            this.setState({posts:res.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).filter(item=>item.PostType===topic).map((item)=>{
+                const UpVotes=item.UpVotes;
+                // const DownVotes=item.DownVotes;
+                const Comments=item.Comments;
+                const PostTime=new Date(item.PostTime).toDateString()
+                return({
+                    name : item.Author,
+                    usertype:item.AuthorType,
+                    photo : item.Authorphoto,
+                    tag : item.PostType,
+                    postTime: PostTime,
+                    content : item.Content_Text,
+                    img : item.Content_Img,
+                    like: (JSON.stringify(UpVotes)==='[]'|| UpVotes.indexOf(this.props.user.username) === -1)?false:true,
+                    likeNumber: JSON.stringify(UpVotes)==='[]'?0:UpVotes.length,
+                    comments:JSON.stringify(Comments)==='[]'?0:Comments.length,
+                    id:item.PostID,
+                });
+            })})
+            
+            setTimeout(()=>{
+                let arr=[...Array(this.state.posts.length)].map(_=>false)
+                this.setState({active:arr})
+            },1000)
+        }
     }
-
+    searchHandler=async ()=>{
+        //search=>this.state.searchContent(later change to this.props.searchContent)
+        let res = await(getPosts())
+        if(res.status === 200){
+            // console.log(res.data)
+            // this.setState({posts:})
+            this.setState({posts:res.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).filter(item=>item.Content_Text.search(this.state.searchContent)!==-1).map((item)=>{
+                const UpVotes=item.UpVotes;
+                // const DownVotes=item.DownVotes;
+                const Comments=item.Comments;
+                const PostTime=new Date(item.PostTime).toDateString()
+                return({
+                    name : item.Author,
+                    usertype:item.AuthorType,
+                    photo : item.Authorphoto,
+                    tag : item.PostType,
+                    postTime: PostTime,
+                    content : item.Content_Text,
+                    img : item.Content_Img,
+                    like: (JSON.stringify(UpVotes)==='[]'|| UpVotes.indexOf(this.props.user.username) === -1)?false:true,
+                    likeNumber: JSON.stringify(UpVotes)==='[]'?0:UpVotes.length,
+                    comments:JSON.stringify(Comments)==='[]'?0:Comments.length,
+                    id:item.PostID,
+                });
+            })})
+            
+            setTimeout(()=>{
+                let arr=[...Array(this.state.posts.length)].map(_=>false)
+                this.setState({active:arr})
+            },1000)
+        }
+    }
+    load=async ()=>{
+        let res = await(getPosts())
+        if(res.status === 200){
+            // console.log(res.data)
+            // this.setState({posts:})
+            this.setState({posts:res.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).map((item)=>{
+                const UpVotes=item.UpVotes;
+                // const DownVotes=item.DownVotes;
+                const Comments=item.Comments;
+                const PostTime=new Date(item.PostTime).toDateString()
+                return({
+                    name : item.Author,
+                    usertype:item.AuthorType,
+                    photo : item.Authorphoto,
+                    tag : item.PostType,
+                    postTime: PostTime,
+                    content : item.Content_Text,
+                    img : item.Content_Img,
+                    like: (JSON.stringify(UpVotes)==='[]'|| UpVotes.indexOf(this.props.user.username) === -1)?false:true,
+                    likeNumber: JSON.stringify(UpVotes)==='[]'?0:UpVotes.length,
+                    comments:JSON.stringify(Comments)==='[]'?0:Comments.length,
+                    id:item.PostID,
+                });
+            })})
+            
+            setTimeout(()=>{
+                let arr=[...Array(this.state.posts.length)].map(_=>false)
+                this.setState({active:arr})
+            },1000)
+        }
+    }
+    loadReverse=async ()=>{
+        let res = await(getPosts())
+        if(res.status === 200){
+            // console.log(res.data)
+            // this.setState({posts:})
+            this.setState({posts:res.data.sort((a,b)=>new Date(a.PostTime)-new Date(b.PostTime)).map((item)=>{
+                const UpVotes=item.UpVotes;
+                // const DownVotes=item.DownVotes;
+                const Comments=item.Comments;
+                const PostTime=new Date(item.PostTime).toDateString()
+                return({
+                    name : item.Author,
+                    usertype:item.AuthorType,
+                    photo : item.Authorphoto,
+                    tag : item.PostType,
+                    postTime: PostTime,
+                    content : item.Content_Text,
+                    img : item.Content_Img,
+                    like: (JSON.stringify(UpVotes)==='[]'|| UpVotes.indexOf(this.props.user.username) === -1)?false:true,
+                    likeNumber: JSON.stringify(UpVotes)==='[]'?0:UpVotes.length,
+                    comments:JSON.stringify(Comments)==='[]'?0:Comments.length,
+                    id:item.PostID,
+                });
+            })})
+            
+            setTimeout(()=>{
+                let arr=[...Array(this.state.posts.length)].map(_=>false)
+                this.setState({active:arr})
+            },1000)
+        }
+    }
+    loadPopular=async ()=>{
+        let res = await(getPosts())
+        if(res.status === 200){
+            // console.log(res.data)
+            // this.setState({posts:})
+            this.setState({posts:res.data.sort((a,b)=>new Date(b.UpVotes.length)-new Date(a.UpVotes.length)).map((item)=>{
+                const UpVotes=item.UpVotes;
+                // const DownVotes=item.DownVotes;
+                const Comments=item.Comments;
+                const PostTime=new Date(item.PostTime).toDateString()
+                return({
+                    name : item.Author,
+                    usertype:item.AuthorType,
+                    photo : item.Authorphoto,
+                    tag : item.PostType,
+                    postTime: PostTime,
+                    content : item.Content_Text,
+                    img : item.Content_Img,
+                    like: (JSON.stringify(UpVotes)==='[]'|| UpVotes.indexOf(this.props.user.username) === -1)?false:true,
+                    likeNumber: JSON.stringify(UpVotes)==='[]'?0:UpVotes.length,
+                    comments:JSON.stringify(Comments)==='[]'?0:Comments.length,
+                    id:item.PostID,
+                });
+            })})
+            
+            setTimeout(()=>{
+                let arr=[...Array(this.state.posts.length)].map(_=>false)
+                this.setState({active:arr})
+            },1000)
+        }
+    }
     addEmoji=(emoji)=>{
         
         this.setState({
@@ -167,7 +319,9 @@ class Forum extends Component{
             emojiShow:!this.state.emojiShow
         })
     }
-
+    changeContent=(e)=>{
+        this.setState({searchContent:e.target.value})
+    }
     render(){
         const maxNumber = 1;
         
@@ -274,7 +428,17 @@ class Forum extends Component{
                 
             </section>
             <section className='filter'>
-                <FilterBar searchContent={this.state.searchContent} searchHandler={this.searchHandler}/>
+                <FilterBar 
+                searchContent={this.state.searchContent} 
+                changeContent={this.changeContent}
+                searchHandler={this.searchHandler}
+
+                load={this.load}
+                loadReverse={this.loadReverse}
+                loadPopular={this.loadPopular}
+                selectTopic={this.topicHandler}
+                topic={this.state.topic}
+                />
             </section>
             <section className='posts'>
                 {this.state.posts.map((item,index)=>

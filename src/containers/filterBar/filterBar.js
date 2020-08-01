@@ -17,17 +17,43 @@ class FilterBar extends PureComponent{
     render(){
         return(
         <div className='filterBar'>
-            <TopicFilter show={this.state.dropdownShow} clicked={this.dropdownHandler}/> 
-            <SearchBox searchContent={this.props.searchContent} clicked={this.props.searchHandler}/>
+            <TopicFilter 
+            topic={this.props.topic}
+            show={this.state.dropdownShow} 
+            clicked={this.dropdownHandler}
+            selectTopic={(topic)=>{
+                // 
+                this.props.selectTopic(topic)
+                this.setState({dropdownShow:!this.state.dropdownShow})
+                
+            }}
+            /> 
+            <SearchBox 
+            searchContent={this.props.searchContent} 
+            changeContent={this.props.changeContent}  
+            searchHandler={this.props.searchHandler}
+            />
             <div className='filterBar__filter'>
                 <div>
-                <FontAwesomeIcon className='filterBar__filter-icon' icon={faSortNumericUpAlt}/>
+                    <FontAwesomeIcon 
+                    className='filterBar__filter-icon' 
+                    icon={faSortNumericUpAlt}
+                    onClick={this.props.load}
+                    />
                 </div>
                 <div>
-                <FontAwesomeIcon className='filterBar__filter-icon' icon={faSortNumericDownAlt}/>
+                    <FontAwesomeIcon 
+                    className='filterBar__filter-icon' 
+                    icon={faSortNumericDownAlt}
+                    onClick={this.props.loadReverse}
+                    />
                 </div>
                 <div>
-                <FontAwesomeIcon className='filterBar__filter-icon' icon={faFireAlt}/>
+                    <FontAwesomeIcon 
+                    className='filterBar__filter-icon' 
+                    icon={faFireAlt}
+                    onClick={this.props.loadPopular}
+                    />
                 </div>
                 
                 
