@@ -9,6 +9,9 @@ export const getMessage = async (name, message,vars)=>
 export const userLogin = async (name,password)=>
     axios.post(`${BASE}/auth/token`,{'username':name,'password':password})
 
+export const signUp = async (data)=>
+    axios.post(`${BASE}/users`,data)
+
 export const getUserInfo = async(name)=>
     axios.get(`${BASE}/users/${name}`,{headers: {'Content-Type': 'application/json','AUTH-TOKEN': sessionStorage.getItem('token')}})
 

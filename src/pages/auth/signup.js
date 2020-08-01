@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/fontawesome-free-solid'
-// import {changePassword} from '../../api/api'
+import {signUp} from '../../api/api'
 
 
 import './signup.scss';
@@ -12,11 +12,13 @@ export default class Signup extends Component{
         super(props);
         this.state = {
             account:'',
-            accountErr:'',
             password:'',
             passwordR:'',
             passwordErr:'',
             passwordRErr:'',
+            email:'',
+            emailErr:'',
+            role:'',
         }
     }
     
@@ -28,14 +30,25 @@ export default class Signup extends Component{
         }
         if(this.state.account !== '' && 
         this.state.password !== '' &&
-        this.state.passwordR !== ''){
-            // let res =(await changePassword(this.state.account,this.state.oldPassword,this.state.password)).data;
+        this.state.passwordR !== ''&&
+        this.state.role !== ''&&
+        this.state.email !== ''
+        ){
+            let res =(await signUp({
+                "username": this.state.account,
+                "userphoto": "",
+                "password": this.state.password,
+                "email": this.state.email,
+                "organization": 'Unihelp',
+                "role": this.state.role
                 
-                // res = JSON.parse(res)
-            // if(res.message === 'update'){
-            //     alert('Change password success!')
-            //     this.props.history.replace("/login")
-            // }
+            }));
+                
+             
+            if(res.status === 200){
+                alert('Sign up success!')
+                this.props.history.replace("/login")
+            }
         
         }else{
             alert('Input can not be null')
@@ -49,7 +62,7 @@ export default class Signup extends Component{
         const regPw = /^.*(?=.{6,16})(?=.*[A-Za-z]{2,})(?=.*[!@#$%^&*?\(\)]).*$/
         return(
             <div className='authbody' > 
-        <div className='auth' style={{height:'600px'}}>
+        <div className='auth' style={{height:'700px'}}>
 
             <header>    
                 <div><FontAwesomeIcon icon={faTimes} style={{marginLeft:'10px',marginTop:'7px'}}/></div>
@@ -66,17 +79,36 @@ export default class Signup extends Component{
                     <input onChange={(e)=>{
                         
                         this.setState({account:e.target.value})
-                        //const regAcc = /^\w+(-\w+)*@[A-Za-z0-9]+((.|-)*[A-Za-z0-9]+).[A-Za-z0-9]+$/;
-                        if(!regAcc.test(this.state.account)){//校验account是否符合邮件格式
-                            this.setState({accountErr:'Account format err'})
-                        }else{
-                            this.setState({accountErr:''})
-                        }            
+                                   
                     }} value={this.state.account}></input>
-                    <li>{this.state.accountErr}</li>
+                    
                 </div>
-                
+                <div>                  
+                    <label>Email</label>
+                    <input onChange={(e)=>{
+                        
+                        this.setState({email:e.target.value})
+                        const regAcc = /^\w+(-\w+)*@[A-Za-z0-9]+((.|-)*[A-Za-z0-9]+).[A-Za-z0-9]+$/;
+                        if(!regAcc.test(this.state.email)){//校验account是否符合邮件格式
+                            this.setState({emailErr:'Account format err'})
+                        }else{
+                            this.setState({emailErr:''})
+                        }            
+                    }} value={this.state.email}></input>
+                    <li>{this.state.emailErr}</li>
+                </div>
+                <div>                  
+                    <label>Role</label>
+                    <input onChange={(e)=>{
+                        
+                        this.setState({role:e.target.value})
+
+                                   
+                    }} value={this.state.role}></input>
+                  
+                </div>
                 <div>
+
                     
                     <label>Password</label>
                     <input onChange={(e)=>{
