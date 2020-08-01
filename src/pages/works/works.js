@@ -38,7 +38,8 @@ class Works extends PureComponent{
             {role:'Uni',photo:'🤖',content:'Of course, you can make an appointment with the UNSW Health Service by calling 9385 5425 or by logging in to our Appointuit appointment booking system through this link: https://widget. appointuit. com/prac_40675/log_in'},
         ],
         chatFlag: false,
-        robotFlag: true
+        robotFlag: true,
+        intersectionObserver:[]
         // initanimate:[false,false,false,false,false,false]
     }
     showHide=()=>{
@@ -58,6 +59,11 @@ class Works extends PureComponent{
           robotFlag:true
         })
     }
+    componentWillUnmount(){
+        this.state.intersectionObserver.map((item,index)=>{
+            item.unobserve(document.getElementById(index));
+        })
+    }
     componentDidMount(){
         
           
@@ -65,16 +71,18 @@ class Works extends PureComponent{
             var intersectionObserver = new IntersectionObserver(function(entries) {
                 // If intersectionRatio is 0, the target is out of view
                 // and we do not need to do anything.
-                
+                document.getElementById(index).classList.add('animate')
                 if (entries[0].intersectionRatio <= 0){
                     document.getElementById(index).classList.contains('animate')&&document.getElementById(index).classList.remove('animate')
                     return
                 };
                 
-                setTimeout(()=>document.getElementById(index).classList.add('animate'),500)
+                
                 
               });
               // start observing
+            let arr=[...this.state.intersectionObserver,intersectionObserver]
+            this.setState({intersectionObserver:arr})
             intersectionObserver.observe(document.getElementById(index));
 
 
@@ -99,7 +107,8 @@ class Works extends PureComponent{
                     <h3>Frequently asked questions and answers on current hot issues</h3>
                 </section>
                 <div style={{display:'flex',justifyContent:'center'}}>
-                    <iframe width="860" height="455" src="https://www.youtube.com/embed/bPITHEiFWLc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="860" height="455" src="https://www.youtube.com/embed/N7xONch9daE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {/* <iframe width="860" height="455" src="https://www.youtube.com/embed/bPITHEiFWLc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                 </div>
                 
    

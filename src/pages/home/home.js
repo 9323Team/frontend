@@ -9,6 +9,8 @@ import './home.scss'
 import Welcome from '../../asserts/tommy.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import {getUserInfos} from '../../state/user/user-action-creater';
+import { connect } from "react-redux";
 
 class Home extends PureComponent{
     state={
@@ -41,8 +43,9 @@ class Home extends PureComponent{
             {role:'Uni',photo:'🤖',content:'Of course, you can make an appointment with the UNSW Health Service by calling 9385 5425 or by logging in to our Appointuit appointment booking system through this link: https://widget. appointuit. com/prac_40675/log_in'},
         ],
         chatFlag: false,
-        robotFlag: true
-        // initanimate:[false,false,false,false,false,false]
+        robotFlag: true,
+        initanimate:[false,false,false,false,false,false],
+        intersectionObserver:[]
     }
     showHide=()=>{
         // console.log(this.state.chatFlag)
@@ -61,23 +64,37 @@ class Home extends PureComponent{
           robotFlag:true
         })
     }
+    componentWillUnmount(){
+        this.state.intersectionObserver.map((item,index)=>{
+            item.unobserve(document.getElementById(index));
+        })
+    }
     componentDidMount(){
         
-          
+        const {getUserInfos}=this.props
+        if(!this.props.user.auth){
+            getUserInfos(sessionStorage.getItem('username'))
+        }
         this.state.dialogExample.map((item,index)=>{
             var intersectionObserver = new IntersectionObserver(function(entries) {
                 // If intersectionRatio is 0, the target is out of view
                 // and we do not need to do anything.
+                // this.refs.index
+                document.getElementById(index).classList.add('animate')
                 
-                if (entries[0].intersectionRatio <= 0){
-                    document.getElementById(index).classList.contains('animate')&&document.getElementById(index).classList.remove('animate')
+                if (entries[0].intersectionRatio <= 0&&document.getElementById(index).classList.contains('animate')){
+                    document.getElementById(index).classList.remove('animate')
+                    // intersectionObserver.unobserve(document.getElementById(index));
                     return
                 };
                 
-                setTimeout(()=>document.getElementById(index).classList.add('animate'),500)
+                
+                // setTimeout(()=>document.getElementById(index).classList.add('animate'),500)
                 
               });
               // start observing
+            let arr=[...this.state.intersectionObserver,intersectionObserver]
+            this.setState({intersectionObserver:arr})
             intersectionObserver.observe(document.getElementById(index));
 
 
@@ -291,4 +308,12 @@ class Home extends PureComponent{
         )
     }
 }
-export default Home;
+
+function mapStateToProps(state) {
+    return {
+      user: state.user.current_user,     
+    }
+}
+// export default Login
+  
+export default connect(mapStateToProps, { getUserInfos })(Home);

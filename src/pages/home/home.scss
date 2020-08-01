@@ -7,7 +7,7 @@
     // background: url('../../asserts/bg.jpg') no-repeat;
     
     background: url('https://www.edi.unsw.edu.au/sites/default/files/styles/carousel_mobile/public/images/suggestion_box.jpeg?h=2d125060&itok=Obk0_k2Q') no-repeat center center fixed; 
-    background-size: 100%;
+    background-size: 100% 100%;
     
     // position: relative;
     &__informDiv{
@@ -116,20 +116,24 @@
         font-family: Circular;
         padding-top:7rem;
         text-align: center;
+        
         h1{
-
+            background: rgba(255, 255, 255, 0.4);
             font-weight: 700;
-            color: #fff;
-            font-size: 39px;
+            color: #7b4545;
+            font-size: 2.5rem;
             letter-spacing: -0.4px;
-            margin-bottom: 8px;
-            text-shadow:  0px .3px rgb(41, 43, 50);
-            
+            padding-top:5px;
+            padding-bottom: 10px;
+            // text-shadow:  0px .3px rgb(41, 43, 50);
+            margin:0
             
         }
         h2{
-            padding-top:2rem;
-            font-size: 32px;
+            margin:0;
+            background: rgba(255, 255, 255, 0.4);
+            // padding-top:2rem;
+            font-size: 2rem;
             font-weight: 500;
             color: rgb(41, 43, 50);
             line-height: 1.6;
@@ -141,128 +145,7 @@
     }
     
 }
-// .home__forumBox{
-//     padding-bottom: 200px;
-    
-//     &-description{
-//         // margin-top:150px;
-//         text-align: center;
-//         h2{
-//             font-weight: 700;
-//             color: rgb(41, 43, 50);
-//             font-size: 32px;
-//             letter-spacing: -0.4px;
-//             margin-bottom: 8px;
-//         }
-//         h3{
-//             font-weight: 300;
-//             color: #545a77;
-//             line-height: 1.6;
-//         }
-//     }
-//     .go-left{
-//         animation: 150s linear 0s infinite normal none running slide;
-//         @keyframes slide {
-//             0%{
-//                 transform:translateZ(0px);
-//             }
-//             100%{
-//                 transform:translate3d(-1920px,0px,0px);
-//             }
-//         }
-//     }
-//     .go-right{
-//         animation: 150s linear 0s infinite normal none running slideR;
-//         @keyframes slideR {
-//             0%{
-//                 transform: translate3d(-1920px, 0px, 0px);
-//             }
-//             100%{
-//                 transform: translate3d(1920px, 0px, 0px);
-//             }
-//         }
-//     }
-//     .home__forumP{
-        
-//         white-space: nowrap;
-//         backface-visibility: hidden;
-//         perspective: 1000px;
-//         transform-style: preserve-3d;
-//         transition: all 0.2s ease 0s;
-        
-//         &-post{
-//             position: relative;
-//             display: inline-block;
-//             vertical-align: top;
-//             width: 300px;
-//             height: 150px;
-//             box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px;
-//             margin: 10px;
-//             background: white;
-//             border-radius: 4px;
-//             span{
-//                 position: relative;
-//                 display: block;
-//                 font-weight: 700;
-//                 color: rgb(41, 43, 50);
-//                 font-size: 11px;
-//                 letter-spacing: 0.8px;
-//                 text-transform: uppercase;
-//                 margin: 0px 24px;
-//                 padding: 12px 0px 4px;
-//                 border-bottom: 1px solid rgb(246, 248, 253);
-//             }
-//             &-content{
-//                 position: relative;
-//                 display: flex;
-//                 flex-wrap: wrap;
-//                 align-items: flex-start;
-//                 margin: 12px 24px 0px;
-//                 img{
-//                     height: 32px;
-//                     width: 32px;
-//                     margin-right: 12px;
-//                     border-radius: 50%;
-//                 }
-//                 h5{
-//                     width: 160px;
-//                     height: 60px;
-//                     margin-left:10px;
-//                     margin-top:0px;
-//                     white-space: pre-line;
-//                     font-weight: 500;
-//                     font-size: 16px;
-//                     line-height: 20px;
-//                     color: rgb(41, 43, 50);
-//                     overflow: hidden;
-//                 }
-//             }
-//             &-role{
-//                 position: absolute;
-//                 bottom: 0px;
-//                 display: block;
-//                 width: calc(100% - 48px);
-//                 margin: 0px 24px;
-//                 padding: 6px 0px;
-    
-//                 border-top: 1px solid rgb(246, 248, 253);
-                
-//             }
-//             .expert{
-//                 color:green;
-//             }
-//             .student{
-//                 color:black;
-//             }
-//             .admin{
-//                 color:red;
-//             }
-            
-//         }
-        
-//     }
 
-// }
 
 .home__chatbotBox{
     
@@ -357,27 +240,13 @@
     
 
 }
-// .home__intro{
+
+@media screen and (max-width: 800px){
+    .dialog{
+        margin-bottom: 1rem;
+    }
+    .home__chatbotBox-dialog {
+        margin-bottom: 10rem;
+    }
     
-//     padding-bottom: 100px;
-//     background:#0EA3C7;
-//     color:#fff;
-//     text-align: center;
-//     img{
-//         width:350px;
-//         height:350px;
-//         margin-top:-200px;
-//         margin-left:-50%;
-//     }
-//     h1{
-//         padding-top:40px;
-//         margin-left:5%;
-//         margin-top:-70px;
-//         line-height: 2.5rem;
-//         text-align: center;
-//     }
-//     h2{
-//         line-height: 2rem;
-//         margin-left:5%;
-//     }
-// }
+}

@@ -3,7 +3,8 @@ import './menu.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandHoldingMedical} from '@fortawesome/free-solid-svg-icons'
 import { Route, withRouter, Link } from "react-router-dom";
-
+import {getUserInfos} from '../../state/user/user-action-creater'
+import { connect } from "react-redux";
 const Menu = props=>{
     const [sticky,setSticky] = useState(true)
     useEffect(()=>{
@@ -25,10 +26,18 @@ const Menu = props=>{
             <Link to='/forum' className='menu__nav-link'>Forum</Link>  
             <Link to='/how-it-works' className='menu__nav-link'>How it works</Link>   
         </div>
-        <div className='menu__auth'>
+        {props.user.auth?<div className='menu__auth menu__photo'>
+        <img src={props.user.userphoto}/><p> {props.user.username} </p>
+        </div>:
+            <div className='menu__auth'>
             <Link to='/login' className='menu__nav-link'>Log in</Link> 
             <Link to='/signup'className='menu__nav-link'>Sign up</Link> 
-        </div>
+        </div>}
     </div>)
 }
-export default Menu;
+function mapStateToProps(state) {
+    return {
+      user: state.user.current_user,     
+    }
+}
+export default connect(mapStateToProps, { getUserInfos })(Menu);

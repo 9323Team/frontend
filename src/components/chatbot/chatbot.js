@@ -91,6 +91,10 @@ export default function Chatbot(props){
         }
         
     }
+    function changeColor(){
+        let newColor = document.getElementsByClassName('chatbot__linkBtn')[0].style.backgroundColor = 'rgb(149, 157, 165)'
+
+    }
     function returnValue(){
         return (
             lists.map((names, index) => {
@@ -119,16 +123,7 @@ export default function Chatbot(props){
                             </div>)
                         } else {
                             let result_list = names.values.split('&*&')
-                            // let result_url = names.url.split('**')
                             let result_final = []
-                            // result_list.concat(result_url); 
-                            // result_list.pop();
-                            // for (let i = 0; i< result_list.length; i++){
-                            //     result_final.push(result_list[i])
-                            //     if (i < result_url.length){
-                            //         result_final.push(result_url[i])
-                            //     }
-                            // }
                             return (<div className='chatbot__returnBot'>
                                 <button className='chatbot__nouseBtn'>
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" 
@@ -139,7 +134,7 @@ export default function Chatbot(props){
                                 if (index === 0 || index % 2 === 0){
                                     return <span><span>{ids}</span><br></br></span>
                                 } else {
-                                    return <a href = {ids} target="_blank">Click here.</a>
+                                    return <button className='chatbot__linkBtn' onClick={()=>changeColor()}><a href = {ids} className='chatbot__link' target="_blank">Click here.</a></button>
                                 }
                             })}
                             </div>

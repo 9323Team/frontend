@@ -5,7 +5,7 @@ import {  Link } from "react-router-dom";
 import {userLogin,getUserInfo} from '../../api/api'
 
 import { connect } from "react-redux";
-//import {loginUser} from '../../state/user/user-action-creators'
+import {getUserInfos} from '../../state/user/user-action-creater';
 import './auth.scss';
 
 class Login extends Component{
@@ -29,9 +29,13 @@ class Login extends Component{
         if(res.status === 200){
             console.log(res.data)
             sessionStorage.setItem('token',res.data.token)
+            sessionStorage.setItem('username',this.state.account)
             let res1 = await getUserInfo(this.state.account)
             if(res1.status === 200){
                 console.log(res1.data)
+                let {getUserInfos}=this.props;
+                getUserInfos(this.state.account)
+                this.props.history.push("/home")
             }
         }
         // this.props.history.push("/home")
@@ -125,13 +129,12 @@ class Login extends Component{
         )
     }
 }
-// function mapStateToProps(state) {
-//     return {
-//       user: state.user.current_user,     
-//     }
-// }
-export default Login
+function mapStateToProps(state) {
+    // console.log(state)
+    return {
+      user: state.user.current_user,     
+    }
+}
+// export default Login
   
-// export default connect(mapStateToProps, {
-//     loginUser
-//   })(Auth);
+export default connect(mapStateToProps, { getUserInfos })(Login);
