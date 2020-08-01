@@ -78,3 +78,26 @@
         float: right;
     }
 }
+@media screen and (max-width: 750px){
+   .menu{
+    &__nav{
+        display:none;
+    }
+    &__auth{
+        margin: 0;
+        margin-right:4px;
+    }
+    
+    
+   }
+    
+}
+@media screen and (max-width: 400px){
+    .menu{
+     
+     &__nav-link{
+         font-weight: 300;
+     }
+    }
+     
+ }
