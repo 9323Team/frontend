@@ -1,0 +1,44 @@
+.welcome__animations{
+    width:20%;
+    
+    position: absolute;
+    margin-left:17%;
+    margin-top:8%;
+    .balloon{
+        animation: floating 1.5s ease-in-out infinite;
+        &-body {
+            animation: pin-anim 1.5s linear infinite;
+        }
+        circle[fill='#000'] {
+            animation: eye-anim 1.5s ease infinite;
+        }
+        circle[fill='#000']:last-of-type {
+            animation-delay: -1s;
+        }
+    }
+    
+}
+
+
+@keyframes pin-anim {
+    0%,100% {
+        d: path('M16,20 q0,-16 16,-16 q16,0 16,16 q0, 8 -8, 16 q-8, 8 -8, 16 q0,-8 -8,-16 q-8,-8 -8,-16');
+    }
+    50% {
+        d: path('M16,20 q0,-15 16,-16 q16,1 16,16 q0, 12 -8, 16 q-8, 4 -8, 16 q0,-12 -8,-16 q-8,-4 -8,-16');
+    }
+}
+
+@keyframes eye-anim {
+    50% { transform: translateY(-1px); }
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(4px);
+    }
+}
