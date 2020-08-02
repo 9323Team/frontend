@@ -134,7 +134,7 @@ export default function Chatbot(props){
                                 if (index === 0 || index % 2 === 0){
                                     return <span><span>{ids}</span><br></br></span>
                                 } else {
-                                    return <button className='chatbot__linkBtn' onClick={()=>changeColor()}><a href = {ids} className='chatbot__link' target="_blank">Click here.</a></button>
+                                    return <button className='chatbot__linkBtn'><a href = {ids} className='chatbot__link' target="_blank">Click here</a></button>
                                 }
                             })}
                             </div>
