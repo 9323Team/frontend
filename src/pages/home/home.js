@@ -45,17 +45,17 @@ class Home extends PureComponent{
         intersectionObserver:[]
     }
     showHide=()=>{
-        // console.log(this.state.chatFlag)
+       
         if (this.state.chatFlag === true){
-            // for(let t = Date.now(); Date.now() - t <= 500;);
+            
             this.setState({chatFlag: false, robotFlag: true})
         } else {
-            // for(let t = Date.now(); Date.now() - t <= 500;);
+            
             this.setState({chatFlag: true, robotFlag: false})
         }
     }
     setChildData=(data)=>{
-        // for(let t = Date.now(); Date.now() - t <= 500;);
+       
         this.setState({
           chatFlag:data,
           robotFlag:true
@@ -74,22 +74,20 @@ class Home extends PureComponent{
         }
         this.state.dialogExample.map((item,index)=>{
             var intersectionObserver = new IntersectionObserver(function(entries) {
-                // If intersectionRatio is 0, the target is out of view
-                // and we do not need to do anything.
-                // this.refs.index
+                
                 document.getElementById(index).classList.add('animate')
                 
                 if (entries[0].intersectionRatio <= 0&&document.getElementById(index).classList.contains('animate')){
                     document.getElementById(index).classList.remove('animate')
-                    // intersectionObserver.unobserve(document.getElementById(index));
+                    
                     return
                 };
                 
                 
-                // setTimeout(()=>document.getElementById(index).classList.add('animate'),500)
+               
                 
               });
-              // start observing
+           
             let arr=[...this.state.intersectionObserver,intersectionObserver]
             this.setState({intersectionObserver:arr})
             intersectionObserver.observe(document.getElementById(index));
@@ -165,144 +163,7 @@ class Home extends PureComponent{
                 </section>
                 
             </div>
-            {/* <div className='home__chatbotBox'>
-                <section className='home__forumBox-description'>
-                    <h2>Chatbot</h2>
-                    <h3>An easy-to-use chatbot to help address student’s queries and<br/> assist them in finding solutions and resources regarding their queriesregarding their well being</h3>
-                </section>
-                <section className='home__chatbotBox-into'>
-                    
-                </section>
-                <section className='home__chatbotBox-dialog'>
-                    {this.state.dialogExample.map((item,index)=><div className='dialog'>
-                    
-                        {item.role ==='User'&&
-                        <div className='dialog__user' id={index} key={index} >
-                            <div className='dialog__user-photo'>
-                                <FontAwesomeIcon icon={faUser}/>
-                            </div>
-                            <div className='dialog__user-frame'><p>{item.content}</p></div>
-                        </div>}
-                        {item.role ==='Uni'&&<div className='dialog__robot' id={index} key={index}>
-                            <div className='dialog__robot-photo'>
-                                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU'></img>
-                            </div>
-                            <div className='dialog__robot-frame'><p>{item.content}</p></div>
-                        </div>}
-                    </div>)}
-                    
-                </section>
-                
-            </div>
-            <div className='home__forumBox'>
-                
-            <section className='home__forumBox-description'>
-                <h2>Forum Community</h2>
-                <h3>An online student community by promoting events <br/>being held by the UNSW community</h3>
-            </section>
-            <section className='home__forumP go-left'>
-                {this.state.postsExample.map((item,index)=>
-                <div className='home__forumP-post' key={index}>
-                        <span>{item.tag}</span>
-                        <div className='home__forumP-post-content'>
-                            <img src={item.photo}></img>
-                            <h5>{item.content}</h5>
-                        </div>
-                        <div 
-                        className={
-                            (item.poster === 'Admin' && 'home__forumP-post-role admin')||
-                            (item.poster === 'Expert advisor' && 'home__forumP-post-role expert')||
-                            (item.poster === 'Student' && 'home__forumP-post-role student')
-                            }>
-                        <svg height="16" width="16" 
-                        className={"star"+' '+(item.poster === 'Admin' && 'admin')||
-                        (item.poster === 'Expert advisor' && 'expert')||
-                        (item.poster === 'Student' && 'student')}
-                         viewBox="0 0 24 24">
-                            <path fill={
-                                (item.poster === 'Admin' && 'red')||
-                                (item.poster === 'Expert advisor' && 'green')||
-                                (item.poster === 'Student' && 'black')
-                            } d="M16.2 8.16l4.74.73a1.23 1.23 0 0 1 .67 2.11l-3.46 3.28a1.23 1.23 0 0 0-.37 1.1l.77 4.68a1.24 1.24 0 0 1-1.82 1.29L12.5 19.1a1.28 1.28 0 0 0-1.16 0l-4.27 2.17A1.25 1.25 0 0 1 5.27 20l.85-4.68a1.19 1.19 0 0 0-.34-1.09l-3.41-3.4a1.23 1.23 0 0 1 .71-2.1l4.75-.64a1.26 1.26 0 0 0 .95-.67l2.16-4.24a1.25 1.25 0 0 1 2.24 0l2.09 4.28a1.22 1.22 0 0 0 .93.7z"></path>
-                        </svg>  {item.poster}
-                        </div>
-                </div>)}
-                
-                    <div className='home__forumP-post'>
-                        <span>News</span>
-                        <div className='home__forumP-post-content'>
-                            <img></img>
-                            <h5>Content</h5>
-                        </div>
-                        <div className='home__forumP-post-role'>
-                        <svg height="16" width="16" className="star" viewBox="0 0 24 24">
-                            <path d="M16.2 8.16l4.74.73a1.23 1.23 0 0 1 .67 2.11l-3.46 3.28a1.23 1.23 0 0 0-.37 1.1l.77 4.68a1.24 1.24 0 0 1-1.82 1.29L12.5 19.1a1.28 1.28 0 0 0-1.16 0l-4.27 2.17A1.25 1.25 0 0 1 5.27 20l.85-4.68a1.19 1.19 0 0 0-.34-1.09l-3.41-3.4a1.23 1.23 0 0 1 .71-2.1l4.75-.64a1.26 1.26 0 0 0 .95-.67l2.16-4.24a1.25 1.25 0 0 1 2.24 0l2.09 4.28a1.22 1.22 0 0 0 .93.7z"></path>
-                        </svg>
-                          professional
-                        </div>
-                </div>
-            </section>
-             <section className='home__forumP go-right'> 
-                {this.state.postsExample.map((item,index)=>
-                <div className='home__forumP-post' key={index}>
-                        <span>{item.tag}</span>
-                        <div className='home__forumP-post-content'>
-                            <img src={item.photo}></img>
-                            <h5>{item.content}</h5>
-                        </div>
-                        <div 
-                        className={
-                            (item.poster === 'Admin' && 'home__forumP-post-role admin')||
-                            (item.poster === 'Expert advisor' && 'home__forumP-post-role expert')||
-                            (item.poster === 'Student' && 'home__forumP-post-role student')
-                            }>
-                        <svg height="16" width="16" 
-                        className={"star"+' '+(item.poster === 'Admin' && 'admin')||
-                        (item.poster === 'Expert advisor' && 'expert')||
-                        (item.poster === 'Student' && 'student')}
-                         viewBox="0 0 24 24">
-                            <path fill={
-                                (item.poster === 'Admin' && 'red')||
-                                (item.poster === 'Expert advisor' && 'green')||
-                                (item.poster === 'Student' && 'black')
-                            } d="M16.2 8.16l4.74.73a1.23 1.23 0 0 1 .67 2.11l-3.46 3.28a1.23 1.23 0 0 0-.37 1.1l.77 4.68a1.24 1.24 0 0 1-1.82 1.29L12.5 19.1a1.28 1.28 0 0 0-1.16 0l-4.27 2.17A1.25 1.25 0 0 1 5.27 20l.85-4.68a1.19 1.19 0 0 0-.34-1.09l-3.41-3.4a1.23 1.23 0 0 1 .71-2.1l4.75-.64a1.26 1.26 0 0 0 .95-.67l2.16-4.24a1.25 1.25 0 0 1 2.24 0l2.09 4.28a1.22 1.22 0 0 0 .93.7z"></path>
-                        </svg>  {item.poster}
-                        </div>
-                </div>)}
-                
-                    <div className='home__forumP-post'>
-                        <span>News</span>
-                        <div className='home__forumP-post-content'>
-                            <img></img>
-                            <h5>Content</h5>
-                        </div>
-                        <div className='home__forumP-post-role'>
-                        <svg height="16" width="16" className="star" viewBox="0 0 24 24">
-                            <path d="M16.2 8.16l4.74.73a1.23 1.23 0 0 1 .67 2.11l-3.46 3.28a1.23 1.23 0 0 0-.37 1.1l.77 4.68a1.24 1.24 0 0 1-1.82 1.29L12.5 19.1a1.28 1.28 0 0 0-1.16 0l-4.27 2.17A1.25 1.25 0 0 1 5.27 20l.85-4.68a1.19 1.19 0 0 0-.34-1.09l-3.41-3.4a1.23 1.23 0 0 1 .71-2.1l4.75-.64a1.26 1.26 0 0 0 .95-.67l2.16-4.24a1.25 1.25 0 0 1 2.24 0l2.09 4.28a1.22 1.22 0 0 0 .93.7z"></path>
-                        </svg>
-                          professional
-                        </div>
-                </div>
-            </section>
-        <div className="home__vedio">
-                <section className='home__forumBox-description'>
-                    <h2>FAQs</h2>
-                    <h3>Frequently asked questions and answers<br/> on current hot issues</h3>
-                </section>
-                <div style={{display:'flex',justifyContent:'center'}}>
-                    <iframe width="860" height="455" src="https://www.youtube.com/embed/bPITHEiFWLc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                
-   
-                
-            </div>
-            </div>
-            
-            <div className='home__intro'> */}
-                {/* <img src={Welcome}/> */}
-                {/* <h1>Welcome to be here</h1>
-                <h2>Get Started now</h2>
-            </div> */}
+           
             <Footer/>
             </div>
         )
