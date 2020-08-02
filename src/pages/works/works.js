@@ -43,7 +43,7 @@ class Works extends PureComponent{
         // initanimate:[false,false,false,false,false,false]
     }
     showHide=()=>{
-        // console.log(this.state.chatFlag)
+       
         if (this.state.chatFlag === true){
             // for(let t = Date.now(); Date.now() - t <= 500;);
             this.setState({chatFlag: false, robotFlag: true})
@@ -239,8 +239,8 @@ class Works extends PureComponent{
             </div>
             <div className='home__intro'>
                 {/* <img src={Welcome}/> */}
-                <h1>Welcome to be here</h1>
-                <h2>Get Started now</h2>
+                <h1>Wellbeing & Health</h1>
+                <h2>Group-3</h2>
                 
             </div>
             <Footer/>
