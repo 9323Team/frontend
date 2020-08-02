@@ -157,6 +157,10 @@ class Forum extends Component{
     }
     topicHandler=async (topic)=>{
         this.setState({topic:topic})
+        if(topic === 'All'){
+            this.load()
+            return;
+        }
         let res = await(getPosts())
         if(res.status === 200){
             // console.log(res.data)
