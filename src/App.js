@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component,useState,useEffect }  from 'react';
 
 import Home from './pages/home/home'
 import Login from './pages/auth/login'
@@ -7,6 +7,8 @@ import Forum from './pages/forum/forum'
 import Post from './pages/forum/post/post'
 import Works from './pages/works/works'
 import Popup from './containers/popup/popup'
+import Chatbot from './components/chatbot/chatbot'
+import Bot from './containers/bot/bot'
 import {
     BrowserRouter as Router,
     Switch,
@@ -16,9 +18,29 @@ import {
 
 
 function App() {
+  let [chatFlag,setChat] = useState(false);
+  let [robotFlag,setRobot] = useState(true);
+  useEffect( ()=>{
+    
+    
+  },[chatFlag, robotFlag]);
+
+  function showHide(data){
+
+    setChat(true)
+    setRobot(false)
+    
+  }
+  function setChildData(data){
+      setChat(data)
+      setRobot(true)
+
+  }
   return (
       <>
       <Popup/>
+      {robotFlag && <Bot showHide={showHide}/> }
+      {chatFlag && <Chatbot setChildData ={setChildData}/>}
     <Router>
         <Switch>
             <Redirect exact from="/" to="/home" />
