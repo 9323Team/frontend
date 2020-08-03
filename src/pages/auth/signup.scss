@@ -2,18 +2,16 @@
         
     margin:0 auto;
     width: 75%;
-    margin-top: 6%;
+    margin-top: 2%;
     border:1px solid #B0B0B0;
     border-radius: 8px;
-    height: 232px;
+    height: 350px;
     padding: 0;
     div{
-        height: 33.3%;
-        &:nth-child(1){
-            border-bottom: 1px solid #B0B0B0;
-        }
-        &:nth-child(2){
-            border-bottom: 1px solid #B0B0B0;
+        height: 20%;
+        border-bottom: 1px solid #B0B0B0;
+        &:nth-child(5){
+            border-bottom: none;
         }
         
     }

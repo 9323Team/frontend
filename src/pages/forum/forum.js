@@ -31,7 +31,7 @@ class Forum extends Component{
     }
    
     async componentDidMount(){
-        // console.log(this.props)
+       
         if(!this.props.user.auth){
             const { getUserInfos } = this.props;
             getUserInfos(sessionStorage.getItem('username'))
@@ -39,7 +39,7 @@ class Forum extends Component{
         }
         let res = await(getPosts())
         if(res.status === 200){
-            // console.log(res.data)
+     
             // this.setState({posts:})
             this.setState({posts:res.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).map((item)=>{
                 const UpVotes=item.UpVotes;
@@ -86,7 +86,7 @@ class Forum extends Component{
         if(res1.status === 200){
             let res = await(getPosts())
             if(res.status === 200){
-                //console.log(res.data)
+             
                 // this.setState({posts:})
                 this.setState({posts:res.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).map((item)=>{
                     const UpVotes=item.UpVotes;
@@ -132,8 +132,6 @@ class Forum extends Component{
             this.setState({textContent:''})
             let res2 = await(getPosts())
             if(res2.status === 200){
-                //console.log(res.data)
-                // this.setState({posts:})
                 this.setState({posts:res2.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).map((item)=>{
                     const UpVotes=item.UpVotes;
                     const DownVotes=item.DownVotes;
@@ -157,9 +155,13 @@ class Forum extends Component{
     }
     topicHandler=async (topic)=>{
         this.setState({topic:topic})
+        if(topic === 'All'){
+            this.load()
+            return;
+        }
         let res = await(getPosts())
         if(res.status === 200){
-            // console.log(res.data)
+    
             // this.setState({posts:})
             this.setState({posts:res.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).filter(item=>item.PostType===topic).map((item)=>{
                 const UpVotes=item.UpVotes;
@@ -191,7 +193,7 @@ class Forum extends Component{
         //search=>this.state.searchContent(later change to this.props.searchContent)
         let res = await(getPosts())
         if(res.status === 200){
-            // console.log(res.data)
+    
             // this.setState({posts:})
             this.setState({posts:res.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).filter(item=>item.Content_Text.search(this.state.searchContent)!==-1).map((item)=>{
                 const UpVotes=item.UpVotes;
@@ -220,9 +222,10 @@ class Forum extends Component{
         }
     }
     load=async ()=>{
+      
         let res = await(getPosts())
         if(res.status === 200){
-            // console.log(res.data)
+          
             // this.setState({posts:})
             this.setState({posts:res.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).map((item)=>{
                 const UpVotes=item.UpVotes;
@@ -253,7 +256,7 @@ class Forum extends Component{
     loadReverse=async ()=>{
         let res = await(getPosts())
         if(res.status === 200){
-            // console.log(res.data)
+        
             // this.setState({posts:})
             this.setState({posts:res.data.sort((a,b)=>new Date(a.PostTime)-new Date(b.PostTime)).map((item)=>{
                 const UpVotes=item.UpVotes;
@@ -284,7 +287,7 @@ class Forum extends Component{
     loadPopular=async ()=>{
         let res = await(getPosts())
         if(res.status === 200){
-            // console.log(res.data)
+        
             // this.setState({posts:})
             this.setState({posts:res.data.sort((a,b)=>new Date(b.UpVotes.length)-new Date(a.UpVotes.length)).map((item)=>{
                 const UpVotes=item.UpVotes;
@@ -358,7 +361,7 @@ class Forum extends Component{
                     {this.state.imgShow&&
                     <div className='imgbox'>
                         <ImageUploading multiple onChange={(imageList)=>{
-                            console.log(imageList);
+                         
                         }} maxNumber={maxNumber}>
                             {({ imageList, onImageUpload, onImageRemoveAll }) => (
                             // write your building UI

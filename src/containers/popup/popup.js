@@ -20,9 +20,9 @@ class Popup extends Component{
         navigator.geolocation.getCurrentPosition((position)=>{
             latitude  = position.coords.latitude;
             longitude = position.coords.longitude;
-            // console.log(latitude,',',longitude)
+        
             
-        },()=>{console.log('error')})
+        },()=>{console.error('error')})
         setTimeout(async ()=>{
             let apikey='5fd90c67a09815ca08b3dc39a36c4ba8'
             // ${this.state.lat}${this.state.lng}

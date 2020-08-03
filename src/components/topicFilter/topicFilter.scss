@@ -1,6 +1,7 @@
 .topicFilter{
     float: left;
     cursor:pointer;
+    z-index:100;
     ul{
         font-size: 1rem;
         margin-top: 0.5rem;
@@ -10,6 +11,7 @@
         background-color: #FFDD9C;
         margin-left: 3%;
         border:1px solid rgba(204,204,204,.5);
+        z-index:100;
     }
     li{
         span{
@@ -35,5 +37,12 @@
             
         }
         
+    }
+}
+@media screen and (max-width: 1300px){
+    .topicFilter{
+        ul{
+            width: 85%;
+        }
     }
 }
