@@ -349,6 +349,42 @@
         margin-left:5%;
     }
 }
+.work__faqTitle{
+    padding-top: 150px;
+    position: relative;
+    top:0px;
+    text-align: center;
+}
+.work__faqDes{
+    position: relative;
+    top:0px;
+    text-align: center;
+}
+.work__faq{
+    position: relative;
+    top:0px;
+    left: 500px;
+    height: 500px;
+    width: 900px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px rgb(154, 162, 173);
+    margin-bottom: -50px;
+    overflow-y: auto;
+}
+.work__questions{
+    // position: absolute;
+    text-align: left;
+    left: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+.work__answers{
+    // position: absolute;
+    text-align: left;
+    left: 30px;
+    margin: 10px;
+    padding-left: 30px;
+}
 @media screen and (max-width: 800px){
     .dialog2{
         margin-bottom: 1rem;
