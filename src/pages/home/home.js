@@ -116,7 +116,9 @@ class Home extends PureComponent{
                         we will do our best to support you.
                     </h2>
                     <div className='home__btnbox'>
-                        <button className='home__btn' >See some FQAs</button>
+                        <button className='home__btn' onClick={()=>{
+                            this.props.history.replace('/how-it-works')
+                        }}>How this works</button>
                         <button className='home__btn' onClick={()=>{
                             this.props.history.replace('/forum')
                         }}>Discuss here</button>
