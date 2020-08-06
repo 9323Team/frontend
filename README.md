@@ -7,4 +7,4 @@ You can click the [link](https://unihelp.vercel.app/)
 
 `npm install`
 
-`npm install` 
+`npm start` 
