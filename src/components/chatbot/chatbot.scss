@@ -302,4 +302,191 @@
     }
     
 }
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    .chatbot{
+        position: fixed;
+        z-index: 9999999;
+        right: 0%;
+        top: 10%;
+        background-color: rgb(255, 255, 255);
+        border-radius: 3%;
+        height: 90%;
+        width: 100%;
+        &__top{
+            position: absolute;
+            top: 0%;
+            height: 15%;
+            width: 100%;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+        &__topCloseIcon{
+            position: absolute;
+            right: 5%;
+            top:5%;
+        }
+        &__frame{
+            position: absolute;
+            top: 15%;
+            height: 70%;
+            width: 100%;
+        }
+    }
+}
+
+@media (min-device-width : 320px) and (max-device-width : 568px) and (-webkit-min-device-pixel-ratio : 2){
+    .chatbot{
+        position: fixed;
+        z-index: 9999999;
+        right: 0%;
+        top: 20%;
+        background-color: rgb(255, 255, 255);
+        border-radius: 3%;
+        height: 80%;
+        width: 100%;
+        &__top{
+            position: absolute;
+            top: 0%;
+            height: 15%;
+            width: 100%;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+        &__topCloseIcon{
+            position: absolute;
+            right: 5%;
+            top:5%;
+        }
+        &__frame{
+            position: absolute;
+            top: 15%;
+            height: 60%;
+            width: 100%;
+        }
+        &__topCloseIcon{
+            position: absolute;
+            right: 15px;
+            top:20px;
+        }
+        &__colorStatus{
+            position: absolute;
+            top: 45px;
+            left: 90px;
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-width: 1px;
+            border-style: solid;
+        }
+        &__img{
+            position: absolute;
+            top:15px;
+            left: 35px;
+            width: 55px;
+        }
+        
+        &__title{
+            position: absolute;
+            top:15px;
+            left: 120px;
+            font-size: 20px;
+            font-weight: 200;
+            white-space: nowrap;
+        }
+
+        &__status{
+            position: absolute;
+            top:41px;
+            left: 120px;
+            font-size: 13px;
+            font-weight: 100;
+            white-space: nowrap;
+            background-color: rgb(255, 255, 255);
+            color: rgb(216, 196, 196);
+        }
+        &__closeIcon{
+            font-size: 20px ;
+            color:rgb(150, 155, 166);
+        }
+        &__sendIcon{
+            font-size: 20px;
+            color: rgb(150, 155, 166);
+        }
+        &__linkBtn{
+            border-radius: 5px;
+            border: none;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }   
+        &__sendButton{
+            border-radius: 55px;
+        }
+    
+        &__botMessage{
+            width:fit-content;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border-radius: 0px 15px 15px 15px;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 100;
+            margin-left: 50px;
+            margin-right: auto;
+            max-width: 65%;
+            padding: 15px 17px;
+        }
+        &__userMessage{
+            width:fit-content;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border-radius: 15px 0px 15px 15px;
+            font-size: 16px;
+            font-weight: 100;
+            line-height: 20px;
+            max-width: 65%;
+            padding: 15px 17px;
+            margin-left: auto;
+            margin-right: 40px;
+        }
+        &__returnBot{
+            position: relative;
+            margin-top: 5px;
+        }
+        &__nouseBtn{
+            width: 40px;
+            height: 40px;
+            border-radius: 100px;
+            margin-left: 15px;
+        }
+        &__nBtn{
+            width: 40px;
+            height: 40px;
+            border-radius: 100px;
+            margin-left: 270px;
+        }
+
+        &__input{
+            position: absolute;
+            bottom: 10%;
+            height: 10%;
+            width: 100%;
+        }
+        &__inputLine{
+            margin-left: 5px;
+            height:80%;
+            width: 80%;
+            font-size: 20px;
+            line-height: 20px;
+        }
+        &__bottom{
+            position: absolute;
+            bottom: 0%;
+            height: 5%;
+            width: 100%;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+
+    }
+}
 
