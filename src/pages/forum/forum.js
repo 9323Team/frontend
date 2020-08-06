@@ -132,7 +132,6 @@ class Forum extends Component{
             this.setState({textContent:''})
             let res2 = await(getPosts())
             if(res2.status === 200){
-
                 this.setState({posts:res2.data.sort((a,b)=>new Date(b.PostTime)-new Date(a.PostTime)).map((item)=>{
                     const UpVotes=item.UpVotes;
                     const DownVotes=item.DownVotes;

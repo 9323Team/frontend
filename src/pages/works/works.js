@@ -94,17 +94,36 @@ class Works extends PureComponent{
         return(
             <div className='homebox' ref="myscroll">
        
-            {this.state.robotFlag && <div><div className='home__informDiv'>Chat with me</div> <button className='home__chatbotBtn' onClick={this.showHide}>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='home__chatbotImg'>
-                    </img>
-                    </button></div> }
-            {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
+            
            
                 <Menu/> 
                 <div className="home__vedio">
                 <section className='home__forumBox-description'>
-                    <h2>FAQs</h2>
+                    {/* <h2>FAQs</h2>
                     <h3>Frequently asked questions and answers on current hot issues</h3>
+                    <div className='work__faq'>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>A:It's on the right corner, you can just click it and talk with it.</p>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>It's on the right corner, you can just click it and talk with it.</p>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>It's on the right corner, you can just click it and talk with it.</p>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>It's on the right corner, you can just click it and talk with it.</p>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>It's on the right corner, you can just click it and talk with it.</p>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>It's on the right corner, you can just click it and talk with it.</p>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>It's on the right corner, you can just click it and talk with it.</p>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>It's on the right corner, you can just click it and talk with it.</p>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>It's on the right corner, you can just click it and talk with it.</p>
+                        <h3 className='work__questions'>1.Where can I find the chatbot?</h3>
+                        <p className='work__answers'>It's on the right corner, you can just click it and talk with it.</p>
+
+                    </div> */}
                 </section>
                 <div style={{display:'flex',justifyContent:'center'}}>
                 <iframe width="860" height="455" src="https://www.youtube.com/embed/N7xONch9daE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

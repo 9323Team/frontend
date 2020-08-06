@@ -1,5 +1,8 @@
 import React,{ PureComponent} from 'react'
 import Menu from '../../containers/menu/menu'
+import Ballon from '../../components/balloon/balloon'
+import Popup from '../../containers/popup/popup'
+import Bot from '../../containers/bot/bot'
 import Footer from '../../components/footer/footer'
 import Chatbot from '../../components/chatbot/chatbot'
 import './home.scss'
@@ -100,12 +103,9 @@ class Home extends PureComponent{
     render(){
         return(
             <div className='homebox' ref="myscroll">
-       
-            {this.state.robotFlag && <div><div className='home__informDiv'>Chat with me</div> <button className='home__chatbotBtn' onClick={this.showHide}>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" alt="" className='home__chatbotImg'>
-                    </img>
-                    </button></div> }
-            {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>}
+            <Popup/>
+            {/* {this.state.robotFlag && <Bot showHide={this.showHide}/> }
+            {this.state.chatFlag && <Chatbot setChildData ={this.setChildData}/>} */}
             <div className="home">
                 <Menu/> 
                 <div className="home__info">
@@ -116,9 +116,11 @@ class Home extends PureComponent{
                         we will do our best to support you.
                     </h2>
                     <div className='home__btnbox'>
-                        <button className='home__btn'onClick={()=>{
+
+                        <button className='home__btn' onClick={()=>{
                             this.props.history.replace('/how-it-works')
-                        }}>See some FQAs</button>
+                        }}>How this works</button>
+
                         <button className='home__btn' onClick={()=>{
                             this.props.history.replace('/forum')
                         }}>Discuss here</button>
