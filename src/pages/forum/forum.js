@@ -31,7 +31,7 @@ class Forum extends Component{
     }
    
     async componentDidMount(){
-       
+       //get all posts data
         if(!this.props.user.auth){
             const { getUserInfos } = this.props;
             getUserInfos(sessionStorage.getItem('username'))
@@ -67,7 +67,7 @@ class Forum extends Component{
             },1000)
         }
     }
-
+    //handle vote up
     handlerLike=async (id,like)=>{
         let res1;
         if(like){
@@ -110,7 +110,7 @@ class Forum extends Component{
         }
         
     }
-
+    //handle post a new post
     handlerPost=async ()=>{
         
         let post = {
@@ -153,6 +153,7 @@ class Forum extends Component{
                 })})}
         }
     }
+    //handle select a topic
     topicHandler=async (topic)=>{
         this.setState({topic:topic})
         if(topic === 'All'){
@@ -189,6 +190,7 @@ class Forum extends Component{
             },1000)
         }
     }
+    //handle search posts
     searchHandler=async ()=>{
         //search=>this.state.searchContent(later change to this.props.searchContent)
         let res = await(getPosts())
@@ -221,6 +223,7 @@ class Forum extends Component{
             },1000)
         }
     }
+    //load posts by posting time new=>old
     load=async ()=>{
       
         let res = await(getPosts())
@@ -253,6 +256,7 @@ class Forum extends Component{
             },1000)
         }
     }
+    //load posts by posting time old=>new
     loadReverse=async ()=>{
         let res = await(getPosts())
         if(res.status === 200){
@@ -284,6 +288,7 @@ class Forum extends Component{
             },1000)
         }
     }
+    ////load posts by popular level
     loadPopular=async ()=>{
         let res = await(getPosts())
         if(res.status === 200){
@@ -315,6 +320,7 @@ class Forum extends Component{
             },1000)
         }
     }
+    //post box add emoji
     addEmoji=(emoji)=>{
         
         this.setState({
@@ -322,6 +328,7 @@ class Forum extends Component{
             emojiShow:!this.state.emojiShow
         })
     }
+    //change input box value
     changeContent=(e)=>{
         this.setState({searchContent:e.target.value})
     }
