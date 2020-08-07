@@ -9,6 +9,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 class Works extends PureComponent{
     state={
+        //example data & component show state data
         postsExample:[
             {tag:'News',photo:'http://img4.a0bi.com/upload/ttq/20190115/1547565135450.jpeg?imageView2/0/w/600/h/800',content:'Today\'s covid19 update',poster:'Admin'},
             {tag:'Disccuss',photo:'http://img.qqzhi.com/uploads/2018-11-30/073745358.jpg',content:'New advises',poster:'Expert advisor'},
@@ -42,6 +43,7 @@ class Works extends PureComponent{
         intersectionObserver:[]
         // initanimate:[false,false,false,false,false,false]
     }
+//hide the chatbotbox
     showHide=()=>{
        
         if (this.state.chatFlag === true){
@@ -59,14 +61,16 @@ class Works extends PureComponent{
           robotFlag:true
         })
     }
+    //remove window observer
     componentWillUnmount(){
         this.state.intersectionObserver.map((item,index)=>{
             item.unobserve(document.getElementById(index));
         })
     }
+
     componentDidMount(){
         
-          
+        //add window observer for animation of chat example
         this.state.dialogExample.map((item,index)=>{
             var intersectionObserver = new IntersectionObserver(function(entries) {
                 // If intersectionRatio is 0, the target is out of view
