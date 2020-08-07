@@ -12,6 +12,7 @@ export default class Post extends Component{
         Content_Text:''
     }
     async componentDidMount(){
+        // sigle post and its comments  (request the data)
         let res=await (getComments(this.props.history.location.pathname.replace('/post/','')))
         if(res.status === 200){
             console.log(res.data)
@@ -24,7 +25,9 @@ export default class Post extends Component{
         }
         
     }
+//post a comment
     postComment=async ()=>{
+        
         let res = await (postComment(
             this.props.history.location.pathname.replace('/post/',''),
             {"content":this.state.commentContent.split('\n').join('<br/>'),"username":sessionStorage.getItem('username')}
