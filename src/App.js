@@ -26,7 +26,7 @@ function App() {
   },[chatFlag, robotFlag]);
 
   function showHide(data){
-
+    //control show or hide the chatbot
     setChat(true)
     setRobot(false)
     
