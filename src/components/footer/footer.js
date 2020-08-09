@@ -10,7 +10,7 @@ const footer=()=>(
           <div className="footer_p2">
             
           </div>
-          <span>Group-3</span>
+          <span>Group 3 - Unihelp</span>
      </div>
 )
 export default footer;
