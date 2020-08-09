@@ -121,7 +121,6 @@ export default function Chatbot(props){
                                 } else {
                                     return <button className='chatbot__linkBtn'><a href = {ids} className='chatbot__link' target="_blank">Click here</a></button>
                                 }
-                                //return words and url sepetately
                             })}
                             </div>
                                 </div>)
@@ -159,7 +158,6 @@ export default function Chatbot(props){
         return(
             
             <div className='chatbot'>
-            //chatbot
             <div className='chatbot__top'>
                 <div className="chatbot__colorStatus"></div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN40MBAAgfdFAEuBxnOqDwLjM8X_o5E4fNPAvqX77Z6YUuAs0nBcZqXwuAhozySskH3AdYmVrY9juC1g&usqp=CAU" 
@@ -172,16 +170,12 @@ export default function Chatbot(props){
                 
             </div>
             <div className='chatbot__frame' ref={(el) => { setMessage(el)  }}>
-                //in order to make the scoll at the bottom of talking page
                 {returnValue()}
-                //the chat content
             </div>
             <div className='chatbot__input'>
-                 //chatbot input
                 <input className='chatbot__inputLine' type='text' maxLength='256' placeholder='Type your message here' 
                 value={searchString} onChange={handleShow} onKeyUp={inputKeyUp}></input>
                 <button className='chatbot__sendButton' onClick={()=>send()} ><FontAwesomeIcon className='chatbot__sendIcon' icon={faPaperPlane}/></button>
-                //send button
             </div>
             <div className='chatbot__bottom'>
             </div>
@@ -195,7 +189,6 @@ export default function Chatbot(props){
         
         <>
         <div> {showFlag && showHide()}</div>
-        //if showflag is ture then show the chatbot, others hide it
        </>
         
         
