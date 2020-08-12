@@ -40,20 +40,26 @@ Answer and Navigate you to the right resources​
 ## Interface
 #### Page 1: Home page
 * Home page
+
 !["home page"](https://images.pexels.com/photos/5044499/pexels-photo-5044499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 * Chatbot
+
 _Based on rules_
+
 _If the input can not be found in our setting rules it will search it on our forum posts with keywords ML._
+
 !["chatbot"](https://images.pexels.com/photos/5044500/pexels-photo-5044500.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 #### Page 2: Forum page
 Everyone can read this page
 But only registered user can post and comment.
 Expert and Admin user type have their own symbol.
+
 !["forum1"](https://images.pexels.com/photos/5044471/pexels-photo-5044471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 !["forum2"](https://images.pexels.com/photos/5044502/pexels-photo-5044502.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 !["forum3"](https://images.pexels.com/photos/5044470/pexels-photo-5044470.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 !["comments"](https://images.pexels.com/photos/5044503/pexels-photo-5044503.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 #### Page 3: How it works
+
 !["w1"](https://images.pexels.com/photos/5044438/pexels-photo-5044438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 !["w2"](https://images.pexels.com/photos/5044437/pexels-photo-5044437.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 
