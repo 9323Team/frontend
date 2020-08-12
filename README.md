@@ -46,7 +46,7 @@ Answer and Navigate you to the right resources​
 
 _Based on rules_
 
-_If the input can not be found in our setting rules it will search it on our forum posts based on ML keywords select._
+_If the input can not be found in our setting rules it will search it on our forum posts based on ML keywords picking._
 
 !["chatbot"](https://images.pexels.com/photos/5044500/pexels-photo-5044500.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 #### Page 2: Forum page
