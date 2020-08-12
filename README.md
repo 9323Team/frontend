@@ -42,8 +42,8 @@ Answer and Navigate you to the right resources​
 * Home page
 !["home page"](https://images.pexels.com/photos/5044499/pexels-photo-5044499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 * Chatbot
-_Based on rules
-_If the input can not be found in our setting rules it will search it on our forum posts with keywords ML.
+_Based on rules_
+_If the input can not be found in our setting rules it will search it on our forum posts with keywords ML._
 !["chatbot"](https://images.pexels.com/photos/5044500/pexels-photo-5044500.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 #### Page 2: Forum page
 Everyone can read this page
