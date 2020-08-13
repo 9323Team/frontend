@@ -8,7 +8,7 @@ import {getMessage} from '../../api/api'
 export default function Chatbot(props){
     let [showFlag,setFlag] = useState(true);
     let [searchString,setSearch] =useState('');
-    let [lists, setList] = useState([{ flag:'bot',values:'hi', url:''}]);
+    let [lists, setList] = useState([{ flag:'bot',values:'Hi!', url:''}]);
     //default message from chatbot
     let [messagesEnd, setMessage] =useState('');
     let [topic, setTopic] =useState('');

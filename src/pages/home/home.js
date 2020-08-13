@@ -21,7 +21,7 @@ class Home extends PureComponent{
             {role:'User',photo:'🎃',content:'I’m sick and I want to see a doctor.'},
             {role:'Uni',photo:'🤖',content:'Oh, sorry hear this. Is an emergency?'},
             {role:'User',photo:'🎃',content:'No，I’m sick and I want to see a doctor.'},
-            {role:'Uni',photo:'🤖',content:'Of course, you can make an appointment with the UNSW Health Service by calling 9385 5425 or by logging in to our Appointuit appointment booking system through this link: https://widget. appointuit. com/prac_40675/log_in'},
+            {role:'Uni',photo:'🤖',content:'Of course, you can make an appointment with the UNSW Health Service by calling 9385 5425 or by logging in to our appointment booking system!'},
         ],
         chatFlag: false,
         robotFlag: true,
