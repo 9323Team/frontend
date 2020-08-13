@@ -121,7 +121,7 @@ class Home extends PureComponent{
             <div className='home__chatbotBox'>
                 <section className='home__forumBox-description'>
                     <h2>Chatbot</h2>
-                    <h3>An easy-to-use chatbot to help address student’s queries and<br/> assist them in finding solutions and resources regarding their queriesregarding their well being</h3>
+                    <h3>An easy-to-use chatbot to help address student’s queries and<br/> assist them in finding solutions and resources regarding their well being</h3>
                 </section>
                 <section className='home__chatbotBox-into'>
                     
